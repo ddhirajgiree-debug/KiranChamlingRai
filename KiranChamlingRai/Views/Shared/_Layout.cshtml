@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - Kiran Chamling Rai</title>
+
+    <!-- CSS फाइल मात्र -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="site-header">
+        <a asp-controller="Home" asp-action="Index" class="brand">
+            <span class="brand-mark">KR</span>
+            <span>
+                <strong>KIRAN</strong>
+                <small>CHAMLING RAI</small>
+            </span>
+        </a>
+
+        <nav class="main-nav" id="mainNav">
+            <a asp-controller="Home" asp-action="Index" data-en="Home" data-ne="गृहपृष्ठ">Home</a>
+            <a asp-controller="Home" asp-action="Biography" data-en="Biography" data-ne="जीवनी">Biography</a>
+            <a asp-controller="Home" asp-action="TheatreWorks" data-en="Theatre Works" data-ne="नाटकहरू">Theatre Works</a>
+            <a asp-controller="Home" asp-action="Films" data-en="Film & Direction" data-ne="चलचित्र तथा निर्देशन">Film &amp; Direction</a>
+
+            <!-- Media Dropdown -->
+            <div class="nav-dropdown">
+                <a href="javascript:void(0);" class="dropdown-toggle" onclick="toggleDropdown(event)" data-en="Media ▼" data-ne="मिडिया ▼">
+                    Media ▼
+                </a>
+                <div class="dropdown-menu">
+                    <a asp-controller="Home" asp-action="Videos" data-en="Videos & Interviews" data-ne="भिडियो तथा अन्तर्वार्ता">
+                        Videos &amp; Interviews
+                    </a>
+                    <a asp-controller="Home" asp-action="News" data-en="News & Articles" data-ne="समाचार तथा लेख">
+                        News &amp; Articles
+                    </a>
+                </div>
+            </div>
+
+            <a asp-controller="Home" asp-action="Contact" data-en="Contact" data-ne="सम्पर्क">Contact</a>
+        </nav>
+
+        <div class="language-switcher">
+            <button type="button" id="langEnglish" class="language-btn active" aria-pressed="true">EN</button>
+            <button type="button" id="langNepali" class="language-btn" aria-pressed="false">नेपाली</button>
+        </div>
+
+        <button type="button" id="menuToggle" class="menu-toggle" aria-label="Toggle navigation">☰</button>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        @RenderBody()
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" style="background-color: #0b1320; color: #a0aabf; text-align: center; padding: 3rem 1.5rem; border-top: 1px solid #23324d; font-family: 'Mukta', sans-serif;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="#home" class="footer-brand" data-en="Kiran Chamling Rai" data-ne="किरण चाम्लिङ राई" style="color: #d4af37; text-decoration: none; font-size: 1.2rem; font-weight: 600; font-family: 'Playfair Display', serif; letter-spacing: 1px;">
+                Kiran Chamling Rai
+            </a>
+        </div>
+
+        <p data-en="Actor · Playwright · Director" data-ne="अभिनेता · नाटककार · निर्देशक" style="font-size: 0.95rem; margin-bottom: 1rem;">
+            Actor · Playwright · Director
+        </p>
+
+        <div style="font-size: 0.9rem; line-height: 1.6;">
+            <p style="margin-bottom: 0.5rem;">
+                <span data-en="© 2026 Kiran Chamling Rai. All rights reserved." data-ne="© २०२६ किरण चाम्लिङ राई। सर्वाधिकार सुरक्षित।">
+                    © 2026 Kiran Chamling Rai. All rights reserved.
+                </span>
+            </p>
+            
+            <p>
+                <span data-en="Powered by " data-ne="द्वारा संचालित ">Powered by </span>
+                <a href="https://nobleidea.com.np/" target="_blank" rel="noopener noreferrer" 
+                   data-en="Noble Idea Solution" data-ne="नोबल आइडिया सोलुसन"
+                   style="color: #d4af37; text-decoration: none; font-weight: 600; transition: color 0.3s;">
+                    Noble Idea Solution
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

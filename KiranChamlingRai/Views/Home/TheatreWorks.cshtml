@@ -1,0 +1,511 @@
+﻿@{
+    ViewData["Title"] = "Theatre Works | नाटकहरू";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .tw-page-wrapper {
+        background-color: #0b1320;
+        color: #ffffff;
+        min-height: 100vh;
+        padding: 5rem 1.5rem;
+        font-family: 'Georgia', 'Mukta', serif;
+    }
+
+    .tw-page-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .tw-page-header {
+        text-align: center;
+        margin-bottom: 5rem;
+    }
+
+        .tw-page-header h1 {
+            font-size: 3rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .tw-page-header p {
+            color: #a0aabf;
+            font-size: 1.1rem;
+        }
+
+    /* =========================================
+               MAIN FEATURED WORKS (Left Photo, Right Text)
+               ========================================= */
+    .tw-featured-list {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .tw-featured-card {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 0;
+        background: #152238;
+        border: 1px solid #23324d;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        align-items: stretch;
+    }
+
+        .tw-featured-card:hover {
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+    .tw-featured-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        background-color: #1a2332; /* फोटो लोड हुँदै गर्दा देखिने रंग */
+    }
+
+    .tw-featured-content {
+        padding: 2.5rem 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+        .tw-featured-content .tw-year {
+            color: #d4af37;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .tw-featured-content h3 {
+            color: #ffffff;
+            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .tw-featured-content p {
+            color: #a0aabf;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+    /* Read More Button */
+    .read-more-btn {
+        display: inline-block;
+        padding: 0.6rem 1.5rem;
+        background: #0b1320;
+        border: 1px solid #23324d;
+        color: #ffffff;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        text-align: center;
+        margin-top: 1rem;
+        align-self: flex-start;
+        font-family: 'Mukta', sans-serif;
+    }
+
+        .read-more-btn:hover {
+            background: #d4af37;
+            color: #0b1320;
+            border-color: #d4af37;
+        }
+
+    /* =========================================
+               OTHER WORKS (Background Photo + Short Description)
+               ========================================= */
+    .tw-other-section {
+        margin-top: 5rem;
+        border-top: 1px solid #23324d;
+        padding-top: 4rem;
+    }
+
+    .tw-section-title {
+        color: #d4af37;
+        font-size: 2rem;
+        margin-bottom: 3rem;
+        font-family: 'Playfair Display', serif;
+        text-align: center;
+    }
+
+    .tw-other-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+
+    .tw-bg-card {
+        position: relative;
+        height: 250px;
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        transition: transform 0.3s ease;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+        .tw-bg-card:hover {
+            transform: scale(1.02);
+        }
+
+        .tw-bg-card .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            transition: transform 0.5s ease;
+            background-color: #1a2332;
+        }
+
+        .tw-bg-card:hover .bg-image {
+            transform: scale(1.1);
+        }
+
+        .tw-bg-card .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(11, 19, 32, 0.95) 0%, rgba(11, 19, 32, 0.4) 60%, transparent 100%);
+            z-index: 2;
+        }
+
+    .tw-bg-content {
+        position: relative;
+        z-index: 3;
+        padding: 2rem;
+    }
+
+        .tw-bg-content h4 {
+            color: #ffffff;
+            font-size: 1.6rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.3rem;
+        }
+
+        .tw-bg-content span {
+            color: #d4af37;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .tw-bg-content p {
+            color: #d1d5db;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0 0 1rem 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+    .tw-bg-card:hover .tw-bg-content p {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .tw-bg-content .read-more-btn {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        background: #0b1320;
+        border: 1px solid #d4af37;
+        color: #d4af37;
+        display: inline-block;
+    }
+
+    .tw-bg-card:hover .tw-bg-content .read-more-btn {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .tw-bg-content .read-more-btn:hover {
+        background: #d4af37;
+        color: #0b1320;
+    }
+
+    @@media (max-width: 900px) {
+        .tw-featured-card {
+            grid-template-columns: 1fr;
+        }
+
+        .tw-featured-image {
+            height: 250px;
+        }
+
+        .tw-featured-content {
+            padding: 2rem;
+        }
+
+            .tw-featured-content h3 {
+                font-size: 1.8rem;
+            }
+    }
+</style>
+
+<div class="tw-page-wrapper">
+    <div class="tw-page-container">
+
+        <!-- Header -->
+        <div class="tw-page-header">
+            <h1 data-en="Selected Theatre Works" data-ne="प्रमुख नाटकहरू">Selected Theatre Works</h1>
+            <p data-en="Selected productions associated with his theatre direction." data-ne="उनको नाट्य निर्देशनसँग सम्बन्धित केही प्रमुख प्रस्तुति।">
+                Selected productions associated with his theatre direction.
+            </p>
+        </div>
+
+        <!-- =========================================
+             SECTION 1: Main Featured Works
+             ========================================= -->
+        <div class="tw-featured-list">
+
+            <!-- 1. Lato Pahad -->
+            <article class="tw-featured-card">
+                <!-- ⚠️ फोटो फिक्स गरिएको -->
+                <img src="@Url.Content("~/images/laatopahad.jpg")"
+                     onerror="this.onerror=null; this.src='https://via.placeholder.com/320x400/152238/d4af37?text=Lato+Pahad';"
+                     class="tw-featured-image" alt="Lato Pahad" />
+                <div class="tw-featured-content">
+                    <span class="tw-year" data-en="2016 AD" data-ne="२०१६ ई.सं.">2016 AD</span>
+                    <h3 data-en="Lato Pahad" data-ne="लाटो पहाड">Lato Pahad</h3>
+                    <p data-en="'Lato Pahad' is one of the notable plays associated with Kiran Chamling Rai..."
+                       data-ne="'लाटो पहाड' किरण चाम्लिङ राईसँग सम्बन्धित उल्लेखनीय नाटकहरूमध्ये एक हो...">
+                        'Lato Pahad' is one of the notable plays associated with Kiran Chamling Rai. His name is connected to the direction and theatrical presentation of this play. The play explores social ignorance and the struggles of marginalized voices, using minimalist stagecraft to challenge the audience.
+                    </p>
+                    <a asp-controller="Home" asp-action="PlayDetails" asp-route-id="lato-pahad" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </article>
+
+            <!-- 2. Jokhana -->
+            <article class="tw-featured-card">
+                <img src="@Url.Content("~/images/jokhana.jpg")"
+                     onerror="this.onerror=null; this.src='https://via.placeholder.com/320x400/152238/d4af37?text=Jokhana';"
+                     class="tw-featured-image" alt="Jokhana" />
+                <div class="tw-featured-content">
+                    <span class="tw-year" data-en="2019 AD" data-ne="२०१९ ई.सं.">2019 AD</span>
+                    <h3 data-en="Jokhana" data-ne="जोखना">Jokhana</h3>
+                    <p data-en="'Jokhana' is one of Kiran Chamling Rai's most critically acclaimed theatrical directions..."
+                       data-ne="'जोखना' किरण चाम्लिङ राईको सबैभन्दा चर्चित र समालोचकबाट प्रशंसित नाट्य निर्देशनहरूमध्ये एक हो...">
+                        'Jokhana' is one of Kiran Chamling Rai's most critically acclaimed theatrical directions. The play portrays the deep pain, uncertainty, and endless wait experienced by families of individuals who disappeared during the decade-long armed conflict in Nepal.
+                    </p>
+                    <a asp-controller="Home" asp-action="PlayDetails" asp-route-id="jokhana" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </article>
+
+            <!-- 3. Khuwaalung -->
+            <article class="tw-featured-card">
+                <img src="@Url.Content("~/images/khuwaalung.jpg")"
+                     onerror="this.onerror=null; this.src='https://via.placeholder.com/320x400/152238/d4af37?text=Khuwaalung';"
+                     class="tw-featured-image" alt="Khuwaalung" />
+                <div class="tw-featured-content">
+                    <span class="tw-year" data-en="2022 AD" data-ne="२०२२ ई.सं.">2022 AD</span>
+                    <h3 data-en="Khuwaalung" data-ne="खुवालुङ">Khuwaalung</h3>
+                    <p data-en="Staged at Mandala Theatre in 2022, 'Khuwaalung' is an important play related to cultural identity..."
+                       data-ne="सन् २०२२ मा मण्डला थिएटरमा मञ्चन भएको 'खुवालुङ' सांस्कृतिक पहिचानसँग सम्बन्धित एक महत्त्वपूर्ण नाटक हो...">
+                        Staged at Mandala Theatre in 2022, 'Khuwaalung' is an important play related to cultural identity and Kirati civilization. Written by Rajan Mukarung and directed by Kiran Chamling Rai.
+                    </p>
+                    <a asp-controller="Home" asp-action="PlayDetails" asp-route-id="khuwaalung" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- =========================================
+             SECTION 2: All Other Works (Background Photo Design)
+             ========================================= -->
+        <div class="tw-other-section">
+            <h3 class="tw-section-title" data-en="Other Notable Performances" data-ne="अन्य उल्लेखनीय प्रस्तुतिहरू">Other Notable Performances</h3>
+
+            <div class="tw-other-grid">
+
+                <!-- 1. Bakhamma -->
+                <div class="tw-bg-card">
+                    <img src="@Url.Content("~/images/bakhamma.jpg")"
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/400x250/1a2332/d4af37?text=Bakhamma';"
+                         class="bg-image" alt="Bakhamma" />
+                    <div class="overlay"></div>
+                    <div class="tw-bg-content">
+                        <span data-en="2024 AD" data-ne="२०२४ ई.सं.">2024 AD</span>
+                        <h4 data-en="Bakhamma" data-ne="बाखाम्मा">Bakhamma</h4>
+                        <p data-en="Written by Rajan Mukarung and directed by Kiran Chamling Rai, staged at Mandala Theatre..."
+                           data-ne="राजन मुकारुङद्वारा लिखित र किरण चाम्लिङ राईद्वारा निर्देशित, मण्डला थिएटरमा मञ्चन भएको...">
+                            Written by Rajan Mukarung and directed by Kiran Chamling Rai, staged at Mandala Theatre. It presents the Mundhum tradition, cultural memory, and ancestral knowledge of the Kirat Rai community.
+                        </p>
+                        <a asp-controller="Home" asp-action="PlayDetails" asp-route-id="bakhamma" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                    </div>
+                </div>
+
+                <!-- 2. Damini Bhir -->
+                <div class="tw-bg-card">
+                    <img src="@Url.Content("~/images/damanibhir.jpg")"
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/400x250/1a2332/d4af37?text=Damini+Bhir';"
+                         class="bg-image" alt="Damini Bhir" />
+                    <div class="overlay"></div>
+                    <div class="tw-bg-content">
+                        <span data-en="2023 AD" data-ne="२०२३ ई.सं.">2023 AD</span>
+                        <h4 data-en="Damini Bhir" data-ne="दमिनी भीर">Damini Bhir</h4>
+                        <p data-en="Staged at Mandala Theatre in 2023..." data-ne="सन् २०२३ मा मण्डला थिएटरमा मञ्चन भएको...">
+                            Staged at Mandala Theatre in 2023, Kiran Chamling Rai handled the responsibility of Music Design and Choreography, showcasing his multifaceted artistic practice.
+                        </p>
+                        <a asp-controller="Home" asp-action="PlayDetails" asp-route-id="damini-bhir" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                    </div>
+                </div>
+
+                <!-- 3. A Search for a Dream -->
+                <div class="tw-bg-card">
+                    <img src="@Url.Content("~/images/searchdream.jpg")"
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/400x250/1a2332/d4af37?text=A+Search+for+a+Dream';"
+                         class="bg-image" alt="A Search for a Dream" />
+                    <div class="overlay"></div>
+                    <div class="tw-bg-content">
+                        <span data-en="2064 B.S." data-ne="२०६४ वि.सं.">2064 B.S.</span>
+                        <h4 data-en="A Search for a Dream" data-ne="एउटा सपनाको खोजी">A Search for a Dream</h4>
+                        <p data-en="A theatrical performance where Kiran Chamling Rai contributed as an actor..."
+                           data-ne="एउटा नाट्य प्रस्तुति जहाँ किरण चाम्लिङ राईले अभिनेताको रूपमा योगदान गर्नुभयो...">
+                            A theatrical performance where Kiran Chamling Rai contributed as an actor, exploring the depths of human aspirations.
+                        </p>
+                        <a asp-controller="Home" asp-action="PlayDetails" asp-route-id="a-search-for-a-dream" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                    </div>
+                </div>
+
+                <!-- 4. A Question -->
+                <div class="tw-bg-card">
+                    <img src="@Url.Content("~/images/aquestion.jpg")"
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/400x250/1a2332/d4af37?text=A+Question';"
+                         class="bg-image" alt="A Question" />
+                    <div class="overlay"></div>
+                    <div class="tw-bg-content">
+                        <span data-en="2064 B.S." data-ne="२०६४ वि.सं.">2064 B.S.</span>
+                        <h4 data-en="A Question" data-ne="एउटा प्रश्न">A Question</h4>
+                        <p data-en="An acting credit that questions societal norms..." data-ne="एउटा अभिनय क्रेडिट जसले सामाजिक मान्यताहरूलाई प्रश्न गर्दछ...">
+                            An acting credit that questions societal norms and explores the complexities of human existence.
+                        </p>
+                        <a asp-controller="Home" asp-action="PlayDetails" asp-route-id="a-question" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                    </div>
+                </div>
+
+                <!-- 5. Time and Violence -->
+                <div class="tw-bg-card">
+                    <img src="@Url.Content("~/images/timevoilence.jpg")"
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/400x250/1a2332/d4af37?text=Time+and+Violence';"
+                         class="bg-image" alt="Time and Violence" />
+                    <div class="overlay"></div>
+                    <div class="tw-bg-content">
+                        <span data-en="2069 B.S." data-ne="२०६९ वि.सं.">2069 B.S.</span>
+                        <h4 data-en="Time and Violence" data-ne="समय र हिंसा">Time and Violence</h4>
+                        <p data-en="A play delving into the intricate relationship between the passage of time..."
+                           data-ne="समय बित्दै जाँदा र हिंसाको समाजमा पर्ने प्रभावबीचको जटिल सम्बन्ध...">
+                            A play delving into the intricate relationship between the passage of time and the impact of violence on society.
+                        </p>
+                        <a asp-controller="Home" asp-action="PlayDetails" asp-route-id="time-and-violence" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                    </div>
+                </div>
+
+                <!-- 6. Woman (Nari) -->
+                <div class="tw-bg-card">
+                    <img src="@Url.Content("~/images/nari.png")"
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/400x250/1a2332/d4af37?text=Nari';"
+                         class="bg-image" alt="Woman" />
+                    <div class="overlay"></div>
+                    <div class="tw-bg-content">
+                        <span data-en="2069 B.S." data-ne="२०६९ वि.सं.">2069 B.S.</span>
+                        <h4 data-en="Woman (Nari)" data-ne="नारी">Woman (Nari)</h4>
+                        <p data-en="Performed in around 25 districts across Nepal..." data-ne="नेपालका करिब २५ जिल्लामा प्रदर्शन भएको...">
+                            Performed in around 25 districts across Nepal, this play highlights the struggles and resilience of women in society.
+                        </p>
+                        <a asp-controller="Home" asp-action="PlayDetails" asp-route-id="nari" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                    </div>
+                </div>
+
+                <!-- 7. Ke Lageu Halkale -->
+                <div class="tw-bg-card">
+                    <img src="@Url.Content("~/images/kelageu.jpg")"
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/400x250/1a2332/d4af37?text=Ke+Lageu+Halkale';"
+                         class="bg-image" alt="Ke Lageu Halkale" />
+                    <div class="overlay"></div>
+                    <div class="tw-bg-content">
+                        <span data-en="2070 B.S." data-ne="२०७० वि.सं.">2070 B.S.</span>
+                        <h4 data-en="Ke Lageu Halkale" data-ne="के लगेउ हल्काले">Ke Lageu Halkale</h4>
+                        <p data-en="A widely toured play performed in around 30 districts..." data-ne="करिब ३० जिल्लामा प्रदर्शन भएको व्यापक रूपमा भ्रमण गरिएको नाटक...">
+                            A widely toured play performed in around 30 districts, known for its engaging narrative and social commentary.
+                        </p>
+                        <a asp-controller="Home" asp-action="PlayDetails" asp-route-id="ke-lageu-halkale" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                    </div>
+                </div>
+
+                <!-- 8. COMA -->
+                <div class="tw-bg-card">
+                    <img src="@Url.Content("~/images/coma.jpg")"
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/400x250/1a2332/d4af37?text=COMA';"
+                         class="bg-image" alt="COMA" />
+                    <div class="overlay"></div>
+                    <div class="tw-bg-content">
+                        <span data-en="2070 B.S." data-ne="२०७० वि.सं.">2070 B.S.</span>
+                        <h4 data-en="COMA – A Political Sex" data-ne="COMA – A Political Sex">COMA – A Political Sex</h4>
+                        <p data-en="A provocative theatrical piece exploring the intersections of politics..." data-ne="राजनीति, समाज र मानवीय सम्बन्धहरूको प्रतिच्छेदन...">
+                            A provocative theatrical piece exploring the intersections of politics, society, and human relationships.
+                        </p>
+                        <a asp-controller="Home" asp-action="PlayDetails" asp-route-id="coma" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                    </div>
+                </div>
+
+                <!-- 9. Majipa Lakhey -->
+                <div class="tw-bg-card">
+                    <img src="@Url.Content("~/images/majipa.jpg")"
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/400x250/1a2332/d4af37?text=Majipa+Lakhey';"
+                         class="bg-image" alt="Majipa Lakhey" />
+                    <div class="overlay"></div>
+                    <div class="tw-bg-content">
+                        <span data-en="2070 B.S." data-ne="२०७० वि.सं.">2070 B.S.</span>
+                        <h4 data-en="Majipa Lakhey" data-ne="मजिपा लाखे">Majipa Lakhey</h4>
+                        <p data-en="A cultural play drawing from Newar traditions and mythology..." data-ne="नेवारी परम्परा र पौराणिक कथाहरूबाट प्रेरित सांस्कृतिक नाटक...">
+                            A cultural play drawing from Newar traditions and mythology, bringing the legend of Majipa Lakhey to life.
+                        </p>
+                        <a asp-controller="Home" asp-action="PlayDetails" asp-route-id="majipa-lakhey" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                    </div>
+                </div>
+
+                <!-- 10. Harjeet -->
+                <div class="tw-bg-card">
+                    <img src="@Url.Content("~/images/harjeet.jpg")"
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/400x250/1a2332/d4af37?text=Harjeet';"
+                         class="bg-image" alt="Harjeet" />
+                    <div class="overlay"></div>
+                    <div class="tw-bg-content">
+                        <span data-en="2071 B.S." data-ne="२०७१ वि.सं.">2071 B.S.</span>
+                        <h4 data-en="Harjeet" data-ne="हारजीत">Harjeet</h4>
+                        <p data-en="A theatrical exploration of victory, defeat..." data-ne="विजय, पराजय र प्रतिकूलताको सामना...">
+                            A theatrical exploration of victory, defeat, and the human spirit in the face of adversity.
+                        </p>
+                        <a asp-controller="Home" asp-action="PlayDetails" asp-route-id="harjeet" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

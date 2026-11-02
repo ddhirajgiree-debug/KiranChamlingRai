@@ -1,0 +1,595 @@
+﻿@{
+    ViewData["Title"] = "Kiran Chamling Rai | Portfolio";
+}
+
+<main id="home">
+  
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <p class="eyebrow"
+               data-en="ACTOR · PLAYWRIGHT · DIRECTOR"
+               data-ne="अभिनेता · नाटककार · निर्देशक">
+                ACTOR · PLAYWRIGHT · DIRECTOR
+            </p>
+
+            <h1 data-en="Kiran Chamling Rai"
+                data-ne="किरण चाम्लिङ राई">
+                Kiran Chamling Rai
+            </h1>
+
+            <h2 data-en="Stories that live on stage and screen."
+                data-ne="मञ्च र पर्दामा जीवन्त रहने कथाहरू।">
+                Stories that live on stage and screen.
+            </h2>
+
+            <p data-en="A Nepali theatre and film artist with a passion for storytelling, performance and direction."
+               data-ne="कथा, अभिनय र निर्देशनप्रति समर्पित नेपाली रङ्गमञ्च तथा चलचित्रकर्मी।">
+                A Nepali theatre and film artist with a passion for storytelling,
+                performance and direction.
+            </p>
+
+            <div class="hero-buttons">
+                <!-- 👇 Biography पेजमा जाने -->
+                <a asp-controller="Home" asp-action="Biography" class="btn btn-gold"
+                   data-en="Discover My Story" data-ne="मेरो परिचय">
+                    Discover My Story
+                </a>
+
+                <!-- 👇 Theatre Works पेजमा जाने -->
+                <a asp-controller="Home" asp-action="TheatreWorks" class="btn btn-outline"
+                   data-en="Explore My Works" data-ne="मेरा कामहरू">
+                    Explore My Works
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-image-wrap">
+            <div class="portrait-frame">
+                <img src="~/images/kiran-chamling-rai.jpeg"
+                     alt="Kiran Chamling Rai, Nepali actor, playwright and director"
+                     class="hero-portrait" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Work -->
+    <section class="content-section featured-section" id="featured">
+        <p class="section-kicker"
+           data-en="FEATURED WORK" data-ne="विशेष कृति">
+            FEATURED WORK
+        </p>
+
+        <h2 data-en="Stories. People. Culture."
+            data-ne="कथा। मानिस। संस्कृति।">
+            Stories. People. Culture.
+        </h2>
+
+        <p data-en="From theatre productions to cinema, explore work shaped by Nepali stories, culture and human experience."
+           data-ne="नेपाली कथा, संस्कृति र मानवीय अनुभवबाट प्रेरित नाटक तथा चलचित्रका कामहरू यहाँ हेर्नुहोस्।">
+            From theatre productions to cinema, explore work shaped by
+            Nepali stories, culture and human experience.
+        </p>
+
+        <!-- 👇 Theatre Works पेजमा जाने लिंक -->
+        <a asp-controller="Home" asp-action="TheatreWorks" class="text-link"
+           data-en="Explore selected works →"
+           data-ne="छानिएका कृतिहरू हेर्नुहोस् →">
+            Explore selected works →
+        </a>
+    </section>
+
+    <!-- Biography -->
+
+    <section class="content-section" id="biography">
+       
+
+        <h2 data-en="Biography" data-ne="जीवनी">Biography</h2>
+
+        <div class="biography-grid">
+            <div>
+                <h3 data-en="A life dedicated to storytelling"
+                    data-ne="कथाकर्ममा समर्पित जीवन">
+                    A life dedicated to storytelling
+                </h3>
+
+                <p data-en="Kiran Chamling Rai is a Nepali actor, playwright and director who has been active in theatre and film for approximately two decades."
+                   data-ne="किरण चाम्लिङ राई नेपाली अभिनेता, नाटककार तथा निर्देशक हुन्। उनी करिब दुई दशकदेखि नेपाली रङ्गमञ्च र चलचित्र क्षेत्रमा सक्रिय छन्।">
+                    Kiran Chamling Rai is a Nepali actor, playwright and
+                    director who has been active in theatre and film for
+                    approximately two decades.
+                </p>
+
+                <p data-en="His work includes theatre productions, film projects, music videos, television work and theatre training. His creative practice connects performance with Nepali society and culture."
+                   data-ne="उनका काममा नाटक, चलचित्र, म्युजिक भिडियो, टेलिभिजन तथा रङ्गमञ्चसम्बन्धी प्रशिक्षण समावेश छन्। उनको सिर्जनात्मक यात्राले अभिनयलाई नेपाली समाज र संस्कृतिसँग जोड्छ।">
+                    His work includes theatre productions, film projects,
+                    music videos, television work and theatre training.
+                </p>
+            </div>
+
+            <div class="detail-card">
+                <h3 data-en="Personal Details" data-ne="व्यक्तिगत विवरण">
+                    Personal Details
+                </h3>
+
+                <p>
+                    <strong data-en="Name:" data-ne="नाम:">Name:</strong>
+                    <span data-en="Kiran Chamling Rai"
+                          data-ne="किरण चाम्लिङ राई">Kiran Chamling Rai</span>
+                </p>
+
+                <p>
+                    <strong data-en="Father:" data-ne="बुबा:">Father:</strong>
+                    <span data-en="Hast Bir Rai" data-ne="हस्त वीर राई">
+                        Hast Bir Rai
+                    </span>
+                </p>
+
+                <p>
+                    <strong data-en="Mother:" data-ne="आमा:">Mother:</strong>
+                    <span data-en="Madhu Chamling Rai" data-ne="मधु चाम्लिङ राई">
+                        Madhu Chamling Rai
+                    </span>
+                </p>
+
+                <p>
+                    <strong data-en="Birthplace:" data-ne="जन्मस्थान:">Birthplace:</strong>
+                    <span data-en="Kurum-ba, Miklajung-5, Panchthar, Nepal"
+                          data-ne="कुरुम्बा, मिक्लाजुङ–५, पाँचथर, नेपाल">
+                        Kurumba, Miklajung-5, Panchthar, Nepal
+                    </span>
+                </p>
+
+                <p>
+                    <strong data-en="Profession:" data-ne="पेशा:">Profession:</strong>
+                    <span data-en="Actor, Playwright, Director"
+                          data-ne="अभिनेता, नाटककार, निर्देशक">
+                        Actor, Playwright, Director
+                    </span>
+                </p>
+
+                <p>
+                    <strong data-en="Based in:" data-ne="बसोबास:">Based in:</strong>
+                    <span data-en="Anamnagar, Kathmandu, Nepal"
+                          data-ne="अनामनगर, काठमाडौं, नेपाल">
+                        Anamnagar, Kathmandu, Nepal
+                    </span>
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- =========================================
+     THEATRE WORKS SECTION
+     ========================================= -->
+    <section class="theatre-section">
+        <div class="theatre-header">
+            <h2 data-en="Selected Theatre Works" data-ne="चयनित नाटकहरू">Selected Theatre Works</h2>
+            <p data-en="Selected productions associated with his theatre direction." data-ne="उनको नाटक निर्देशनसँग सम्बन्धित चयनित प्रस्तुतिहरू।">
+                Selected productions associated with his theatre direction.
+            </p>
+        </div>
+
+        <div class="theatre-grid">
+
+            <!-- Card 1: Lato Pahad -->
+            <div class="theatre-card">
+                <div class="card-image">
+                    <img src="~/images/laatopahad.jpg" alt="Lato Pahad" />
+                </div>
+                <div class="card-content">
+                    <span class="card-year">2016 AD</span>
+                    <h3 data-en="Lato Pahad" data-ne="लाटो पहाड">Lato Pahad</h3>
+                    <p data-en="A theatrical exploration of social reality and human struggle." data-ne="सामाजिक यथार्थ र मानवीय संघर्षको नाटकीय खोज।">
+                        A theatrical exploration of social reality and human struggle.
+                    </p>
+                    <!-- 👇 डाटा एट्रिब्युट र नेपाली टेक्स्ट थपियो -->
+                    <a asp-controller="Home" asp-action="PlayDetails" asp-route-id="lato-pahad" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </div>
+
+            <!-- Card 2: Jokhana -->
+            <div class="theatre-card">
+                <div class="card-image">
+                    <img src="~/images/jokhana.jpg" alt="Jokhana" />
+                </div>
+                <div class="card-content">
+                    <span class="card-year">2019 AD</span>
+                    <h3 data-en="Jokhana" data-ne="जोखना">Jokhana</h3>
+                    <p data-en="Based on the pain and wait of families of the disappeared during conflict." data-ne="द्वन्द्वका क्रममा बेपत्ता भएका परिवारको पीडा र पर्खाइमा आधारित।">
+                        Based on the pain and wait of families of the disappeared during conflict.
+                    </p>
+                    <a asp-controller="Home" asp-action="PlayDetails" asp-route-id="jokhana" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </div>
+
+            <!-- Card 3: Khuwaalung -->
+            <div class="theatre-card">
+                <div class="card-image">
+                    <img src="~/images/khuwaalung.jpg" alt="Khuwaalung" />
+                </div>
+                <div class="card-content">
+                    <span class="card-year">2022 AD</span>
+                    <h3 data-en="Khuwaalung" data-ne="खुवालुङ">Khuwaalung</h3>
+                    <p data-en="Bringing Kirati civilization and cultural identity to the stage." data-ne="किराती सभ्यता र सांस्कृतिक पहिचानलाई रंगमञ्चमा प्रस्तुत गर्दै।">
+                        Bringing Kirati civilization and cultural identity to the stage.
+                    </p>
+                    <a asp-controller="Home" asp-action="PlayDetails" asp-route-id="khuwaalung" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </div>
+
+            <!-- Card 4: Bakhamma -->
+            <div class="theatre-card">
+                <div class="card-image">
+                    <img src="~/images/bakhamma.jpg" alt="Bakhamma" />
+                </div>
+                <div class="card-content">
+                    <span class="card-year">2024 AD</span>
+                    <h3 data-en="Bakhamma" data-ne="बाखाम्मा">Bakhamma</h3>
+                    <p data-en="A modern presentation of Mundhum tradition and ancestral knowledge." data-ne="मुन्दुमी परम्परा र पुर्खाको ज्ञानको आधुनिक प्रस्तुति।">
+                        A modern presentation of Mundhum tradition and ancestral knowledge.
+                    </p>
+                    <a asp-controller="Home" asp-action="PlayDetails" asp-route-id="bakhamma" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- =========================================
+     FILM & DIRECTION SECTION
+     ========================================= -->
+    <section class="content-section alternate-section" id="films">
+        <div class="fd-header">
+            <h2 data-en="Film & Direction" data-ne="चलचित्र तथा निर्देशन">Film &amp; Direction</h2>
+            <p data-en="His screen credits include acting and assistant direction across Nepali film projects." data-ne="उनको पर्दाको अनुभवमा नेपाली चलचित्र परियोजनाहरूमा अभिनय र सहायक निर्देशन समावेश छन्।">
+                His screen credits include acting and assistant direction across Nepali film projects.
+            </p>
+        </div>
+
+        <div class="fd-grid">
+            <!-- Film 1: Jari -->
+            <article class="fd-card">
+                <div class="fd-image-wrap">
+                    <img src="~/images/jaari.jpg" alt="Jari" class="fd-image" />
+                </div>
+                <div class="fd-content">
+                    <span class="fd-role" data-en="Assistant Director" data-ne="सहायक निर्देशक">Assistant Director</span>
+                    <h3 class="fd-title" data-en="Jari" data-ne="जारी">Jari</h3>
+                    <p class="fd-desc" data-en="Worked as Chief Assistant Director." data-ne="मुख्य सहायक निर्देशकको रूपमा काम गरेका छन्।">Worked as Chief Assistant Director.</p>
+                    <!-- 👇 यसले नयाँ पेज खोल्छ -->
+                    <a asp-controller="Home" asp-action="FilmDetails" asp-route-id="jari" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </article>
+
+            <!-- Film 2: Mansara -->
+            <article class="fd-card">
+                <div class="fd-image-wrap">
+                    <img src="~/images/mansara.jpg" alt="Mansara" class="fd-image" />
+                </div>
+                <div class="fd-content">
+                    <span class="fd-role" data-en="Asst. Director & Actor" data-ne="सहायक निर्देशक र अभिनेता">Asst. Director &amp; Actor</span>
+                    <h3 class="fd-title" data-en="Mansara" data-ne="मनसरा">Mansara</h3>
+                    <p class="fd-desc" data-en="Contributed as Chief Assistant Director and acted in the film." data-ne="मुख्य सहायक निर्देशकको रूपमा योगदान र चलचित्रमा अभिनय।">Contributed as Chief Assistant Director and acted in the film.</p>
+                    <a asp-controller="Home" asp-action="FilmDetails" asp-route-id="mansara" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </article>
+
+            <!-- Film 3: Rimai -->
+            <article class="fd-card">
+                <div class="fd-image-wrap">
+                    <img src="~/images/rimai.jpg" alt="Rimai" class="fd-image" />
+                </div>
+                <div class="fd-content">
+                    <span class="fd-role" data-en="Assistant Director" data-ne="सहायक निर्देशक">Assistant Director</span>
+                    <h3 class="fd-title" data-en="Rimai" data-ne="रिमै">Rimai</h3>
+                    <p class="fd-desc" data-en="Worked as Chief Assistant Director." data-ne="मुख्य सहायक निर्देशकको रूपमा काम गरेका छन्।">Worked as Chief Assistant Director.</p>
+                    <a asp-controller="Home" asp-action="FilmDetails" asp-route-id="rimai" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </article>
+
+            <!-- Film 4: Jari 2 -->
+            <article class="fd-card">
+                <div class="fd-image-wrap">
+                    <img src="~/images/jari2.jpg" alt="Jari 2" class="fd-image" />
+                </div>
+                <div class="fd-content">
+                    <span class="fd-role" data-en="Asst. Director & Actor" data-ne="सहायक निर्देशक र अभिनेता">Asst. Director &amp; Actor</span>
+                    <h3 class="fd-title" data-en="Jari 2" data-ne="जारी २">Jari 2</h3>
+                    <p class="fd-desc" data-en="Worked as Chief Assistant Director and acted in the film." data-ne="मुख्य सहायक निर्देशकको रूपमा काम र चलचित्रमा अभिनय।">Worked as Chief Assistant Director and acted in the film.</p>
+                    <a asp-controller="Home" asp-action="FilmDetails" asp-route-id="jari2" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </article>
+        </div>
+    </section>
+    <!-- =========================================
+     EXPERIENCE SECTION STYLES
+     ========================================= -->
+    <style>
+            .exp-section {
+                padding: 5rem 1.5rem;
+                background-color: #0b1320;
+            }
+
+            .exp-container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .exp-header {
+                margin-bottom: 3rem;
+            }
+
+                .exp-header h2 {
+                    font-family: 'Playfair Display', serif;
+                    font-size: 2.5rem;
+                    color: #ffffff;
+                    margin-bottom: 0.5rem;
+                }
+
+            .exp-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 2rem;
+            }
+
+            /* आकर्षक कार्ड डिजाइन */
+            .exp-card {
+                background: linear-gradient(145deg, #152238, #101a2b);
+                border: 1px solid #23324d;
+                border-radius: 12px;
+                padding: 2rem;
+                position: relative;
+                overflow: hidden;
+                transition: all 0.4s ease;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                display: flex;
+                flex-direction: column;
+            }
+
+                /* माथि सुनौलो रेखा (Top Gold Line) */
+                .exp-card::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 3px;
+                    background: #d4af37;
+                    transform: scaleX(0);
+                    transform-origin: left;
+                    transition: transform 0.4s ease;
+                }
+
+                .exp-card:hover::before {
+                    transform: scaleX(1);
+                }
+
+                .exp-card:hover {
+                    transform: translateY(-8px);
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+                    border-color: rgba(212, 175, 55, 0.3);
+                }
+
+            /* आइकन बक्स */
+            .exp-icon-box {
+                width: 50px;
+                height: 50px;
+                background: rgba(212, 175, 55, 0.1);
+                border: 1px solid rgba(212, 175, 55, 0.2);
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1.5rem;
+                transition: all 0.4s ease;
+            }
+
+            .exp-card:hover .exp-icon-box {
+                background: #d4af37;
+            }
+
+            /* SVG आइकन */
+            .exp-icon-box svg {
+                width: 24px;
+                height: 24px;
+                stroke: #d4af37;
+                transition: stroke 0.4s ease;
+            }
+
+            .exp-card:hover .exp-icon-box svg {
+                stroke: #0b1320; /* Hover गर्दा कालो हुने */
+            }
+
+            .exp-card h3 {
+                color: #ffffff;
+                font-size: 1.3rem;
+                font-family: 'Playfair Display', serif;
+                margin-bottom: 1rem;
+            }
+
+            .exp-card p {
+                color: #a0aabf;
+                font-size: 0.95rem;
+                line-height: 1.7;
+                margin: 0;
+                flex-grow: 1;
+            }
+    </style>
+
+    <!-- =========================================
+     EXPERIENCE SECTION HTML
+     ========================================= -->
+    <section class="exp-section">
+        <div class="exp-container">
+
+            <div class="exp-header">
+                <h2 data-en="Experience & Theatre Training" data-ne="अनुभव तथा रंगमञ्च तालिम">Experience &amp; Theatre Training</h2>
+            </div>
+
+            <div class="exp-grid">
+
+                <!-- 1. Television & Video -->
+                <div class="exp-card">
+                    <div class="exp-icon-box">
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 data-en="Television & Video Editing" data-ne="टेलिभिजन तथा भिडियो सम्पादन">Television &amp; Video Editing</h3>
+                    <p data-en="Worked as a control room operator and video editor at Himshikhar Television from 2067 to 2069 B.S. Also worked with Mila Production House and Point Production House."
+                       data-ne="२०६७ सालदेखि २०६९ सालसम्म हिमशिखर टेलिभिजनमा कन्ट्रोल रुम अपरेटर तथा भिडियो सम्पादकको रूपमा काम गरे। Mila Production House र Point Production House मा पनि काम गरे।">
+                        Worked as a control room operator and video editor at Himshikhar Television from 2067 to 2069 B.S. Also worked with Mila Production House and Point Production House.
+                    </p>
+                </div>
+
+                <!-- 2. Radio Drama -->
+                <div class="exp-card">
+                    <div class="exp-icon-box">
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                        </svg>
+                    </div>
+                    <h3 data-en="Radio Drama" data-ne="रेडियो नाटक">Radio Drama</h3>
+                    <p data-en="Acted in the radio drama 'Maisari Sunkhari' with Anetena Foundation Nepal and 'Mitini' with Radio Sagarmatha, showcasing his vocal acting skills."
+                       data-ne="Anetena Foundation Nepal सँग रेडियो नाटक 'माइसरि सुनखरि' र रेडियो सगरमाथासँग 'मितिनि' मा अभिनय गरे, आफ्नो स्वर अभिनय कौशल देखाउँदै।">
+                        Acted in the radio drama 'Maisari Sunkhari' with Anetena Foundation Nepal and 'Mitini' with Radio Sagarmatha, showcasing his vocal acting skills.
+                    </p>
+                </div>
+
+                <!-- 3. Theatre Training -->
+                <div class="exp-card">
+                    <div class="exp-icon-box">
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
+                        </svg>
+                    </div>
+                    <h3 data-en="Theatre Training" data-ne="रंगमञ्च तालिम">Theatre Training</h3>
+                    <p data-en="Provided theatre-related training for aspiring performers, including a 20-day training in Padajungi, Jhapa in 2074 B.S. and a 12-day training in Dhangadhi, Kailali."
+                       data-ne="नयाँ कलाकारहरूको लागि रंगमञ्चसम्बन्धी तालिम प्रदान गरे, जसमा २०७४ सालमा झापाको पाडाजुङीमा २० दिने तालिम र धनगढी, कैलालीमा १२ दिने तालिम समावेश छ।">
+                        Provided theatre-related training for aspiring performers, including a 20-day training in Padajungi, Jhapa in 2074 B.S. and a 12-day training in Dhangadhi, Kailali.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- =========================================
+     AWARDS & ACHIEVEMENTS SECTION
+     ========================================= -->
+    <section class="awards-section">
+        <div class="awards-container">
+
+            <div class="awards-header">
+                
+                <h2 data-en="Awards & Achievements" data-ne="पुरस्कार तथा उपलब्धिहरू">Awards &amp; Achievements</h2>
+            </div>
+
+            <!-- Award Card -->
+            <div class="award-card">
+                <!-- Glowing Star Icon (SVG) -->
+                <div class="award-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                </div>
+
+                <div class="award-content">
+                    <h3 data-en="Gopal Prasad Rimal National Award (2025)" data-ne="गोपाल प्रसाद रिमाल राष्ट्रिय पुरस्कार (२०२५)">
+                        Gopal Prasad Rimal National Award (2025)
+                    </h3>
+                    <p data-en="Recognition for his contribution to Nepali theatre and the performing arts." data-ne="नेपाली रंगमञ्च र प्रदर्शन कलामा पुर्‍याएको योगदानको कदर।">
+                        Recognition for his contribution to Nepali theatre and the performing arts.
+                    </p>
+                    <span class="award-year" data-en="2025 AD" data-ne="२०२५ ई.सं.">2025 AD</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- =========================================
+     MEDIA SECTION (Play Inline & Link to YouTube)
+     ========================================= -->
+    <section class="content-section alternate-section" id="media">
+        <div class="media-container">
+
+            <div class="media-header">
+                <span class="section-kicker" data-en="MEDIA ARCHIVE" data-ne="मिडिया अभिलेख">MEDIA ARCHIVE</span>
+                <h2 data-en="Video Interviews & Conversations" data-ne="भिडियो अन्तर्वार्ता तथा कुराकानी">Video Interviews &amp; Conversations</h2>
+                <p data-en="Explore interviews, literary conversations, and discussions featuring Kiran Chamling Rai." data-ne="किरण चाम्लिङ राई सम्मिलित अन्तर्वार्ता, साहित्यिक कुराकानी र छलफलहरू हेर्नुहोस्।">
+                    Explore interviews, literary conversations, and discussions featuring Kiran Chamling Rai.
+                </p>
+            </div>
+
+            <!-- Videos Grid -->
+            <div class="interview-grid">
+
+                <!-- Video 1 -->
+                <article class="interview-card">
+                    <!-- फोटोमा क्लिक गर्दा त्यहीँ चल्ने (Inline) -->
+                    <div class="video-thumbnail" id="thumb-1" onclick="playVideo('thumb-1', 's3k3soDFrNY')">
+                        <img src="https://img.youtube.com/vi/s3k3soDFrNY/hqdefault.jpg" alt="Interview 1" loading="lazy" />
+                        <span class="play-button">▶</span>
+                    </div>
+                    <div class="interview-content">
+                        <h3 data-en="Interviews & Conversations" data-ne="अन्तर्वार्ता तथा कुराकानी">Interviews &amp; Conversations</h3>
+                        <p data-en="Watch interviews and conversations on YouTube." data-ne="YouTube मा अन्तर्वार्ता तथा कुराकानी हेर्नुहोस्।">
+                            Watch interviews and conversations on YouTube.
+                        </p>
+                        <!-- 👇 यो बटनले नयाँ पेज (YouTube) खोल्छ -->
+                        <a class="watch-button" href="https://www.youtube.com/watch?v=s3k3soDFrNY" target="_blank" rel="noopener noreferrer" data-en="WATCH ON YOUTUBE" data-ne="YOUTUBE मा हेर्नुहोस्">
+                            WATCH ON YOUTUBE
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Video 2 -->
+                <article class="interview-card">
+                    <div class="video-thumbnail" id="thumb-2" onclick="playVideo('thumb-2', 'mXA5vsTOhrE')">
+                        <img src="https://img.youtube.com/vi/mXA5vsTOhrE/hqdefault.jpg" alt="Interview 2" loading="lazy" />
+                        <span class="play-button">▶</span>
+                    </div>
+                    <div class="interview-content">
+                        <h3 data-en="Featured: In Conversation with Kiran" data-ne="विशेष: किरणसँगको कुराकानी">Featured: In Conversation with Kiran</h3>
+                        <p data-en="A detailed discussion covering his journey, the Nepali theatre scene, and his creative vision." data-ne="उनको यात्रा, नेपाली रंगमञ्चको अवस्था र उनको सिर्जनात्मक दृष्टिकोण समेटिएको विस्तृत कुराकानी।">
+                            A detailed discussion covering his journey, the Nepali theatre scene, and his creative vision.
+                        </p>
+                        <!-- 👇 यो बटनले नयाँ पेज (YouTube) खोल्छ -->
+                        <a class="watch-button" href="https://www.youtube.com/watch?v=mXA5vsTOhrE" target="_blank" rel="noopener noreferrer" data-en="WATCH ON YOUTUBE" data-ne="YOUTUBE मा हेर्नुहोस्">
+                            WATCH ON YOUTUBE
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- View All Interviews Button -->
+            <div class="view-all-wrapper">
+                <a asp-controller="Home" asp-action="Videos" class="view-all-btn" data-en="VIEW ALL INTERVIEWS" data-ne="सबै अन्तर्वार्ता हेर्नुहोस्">
+                    VIEW ALL INTERVIEWS
+                </a>
+            </div>
+
+        </div>
+    </section>
+    <!-- =========================================
+     JAVASCRIPT FOR PLAYING VIDEO INLINE
+     ========================================= -->
+    <script>
+            function playVideo(elementId, videoId) {
+                const element = document.getElementById(elementId);
+                element.innerHTML = `
+                        <iframe width="100%" height="100%"
+                                src="https://www.youtube.com/embed/${videoId}?autoplay=1"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                        </iframe>
+                    `;
+                element.style.cursor = "default";
+                element.onclick = null;
+            }
+    </script>
+</main>

@@ -1,0 +1,282 @@
+﻿@{
+    ViewData["Title"] = "Play Details | नाटकको विवरण";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string playId = ViewBag.PlayId as string ?? "";
+
+    string playTitleEn = "";
+    string playTitleNp = "";
+    string playYear = "";
+    string playDescEn = "";
+    string playDescNp = "";
+    string playImage = "/images/default-theatre.jpg"; // फोटो नभएमा डिफल्ट देखिन्छ
+
+    // ==========================================
+    // मुख्य ३ वटा नाटक (Featured)
+    // ==========================================
+    if (playId == "lato-pahad")
+    {
+        playTitleEn = "Lato Pahad"; playTitleNp = "लाटो पहाड";
+        playYear = "2016 AD";
+        playImage = "/images/laatopahad.jpg";
+        playDescEn = "'Lato Pahad' is one of the notable plays associated with Kiran Chamling Rai. His name is connected to the direction and theatrical presentation of this play. The play explores social ignorance and the struggles of marginalized voices, using minimalist stagecraft to challenge the audience. It dives deep into the psychological impacts of societal blindness, bringing to light the struggles of those often ignored by the mainstream.";
+        playDescNp = "'लाटो पहाड' किरण चाम्लिङ राईसँग सम्बन्धित उल्लेखनीय नाटकहरूमध्ये एक हो। प्रकाशित सामग्रीमा उहाँको नाम यस नाटकको निर्देशन तथा रंगमञ्चीय प्रस्तुतिसँग जोडिएको छ। यो नाटकले सामाजिक अज्ञानता र सीमान्तकृत आवाजहरूको संघर्षलाई अन्वेषण गर्दछ, र दर्शकहरूलाई चुनौती दिन न्यूनतम मञ्चीय शैली प्रयोग गर्दछ।";
+    }
+    else if (playId == "jokhana")
+    {
+        playTitleEn = "Jokhana"; playTitleNp = "जोखना";
+        playYear = "2019 AD";
+        playImage = "/images/jokhana.jpg";
+        playDescEn = "'Jokhana' is one of Kiran Chamling Rai's most critically acclaimed theatrical directions. The play portrays the deep pain, uncertainty, and endless wait experienced by families of individuals who disappeared during the decade-long armed conflict in Nepal. The creative process was shaped by a field workshop in Kalabang Gharedi near Pokhara, incorporating the lived experiences of conflict victims.";
+        playDescNp = "'जोखना' किरण चाम्लिङ राईको सबैभन्दा चर्चित र समालोचकबाट प्रशंसित नाट्य निर्देशनहरूमध्ये एक हो। यो नाटकले नेपालको दशक लामो सशस्त्र द्वन्द्वका क्रममा बेपत्ता भएका व्यक्तिहरूका परिवारले भोग्नुपरेको गहिरो पीडा, अनिश्चितता र अन्त्यहीन पर्खाइलाई चित्रण गर्दछ।";
+    }
+    else if (playId == "khuwaalung")
+    {
+        playTitleEn = "Khuwaalung"; playTitleNp = "खुवालुङ";
+        playYear = "2022 AD";
+        playImage = "/images/khuwaalung.jpg";
+        playDescEn = "Staged at Mandala Theatre in 2022, 'Khuwaalung' is an important play related to cultural identity and Kirati civilization. Written by Rajan Mukarung and directed by Kiran Chamling Rai, it brings the religious and cultural significance of Khuwaalung to the stage. It explores oral traditions, myths, and the relationship between development and cultural heritage.";
+        playDescNp = "सन् २०२२ मा मण्डला थिएटरमा मञ्चन भएको 'खुवालुङ' सांस्कृतिक पहिचान र किराती सभ्यतासँग सम्बन्धित एक महत्त्वपूर्ण नाटक हो। राजन मुकारुङद्वारा लिखित र किरण चाम्लिङ राईद्वारा निर्देशित, यसले खुवालुङको धार्मिक र सांस्कृतिक महत्त्वलाई रंगमञ्चमा प्रस्तुत गर्दछ।";
+    }
+
+    // ==========================================
+    // अन्य १० वटा नाटक (Other Works) - सबैको फोटो सेट गरिएको
+    // ==========================================
+    else if (playId == "bakhamma")
+    {
+        playTitleEn = "Bakhamma"; playTitleNp = "बाखाम्मा";
+        playYear = "2024 AD";
+        playImage = "/images/bakhamma.jpg";
+        playDescEn = "Written by Rajan Mukarung and directed by Kiran Chamling Rai, staged at Mandala Theatre. It presents the Mundhum tradition, cultural memory, and ancestral knowledge of the Kirat Rai community. The play explores the traditional knowledge of the community and brings it to a new generation and wider audience.";
+        playDescNp = "राजन मुकारुङद्वारा लिखित र किरण चाम्लिङ राईद्वारा निर्देशित, मण्डला थिएटरमा मञ्चन भएको। यसले किरात राई समुदायको मुन्दुमी परम्परा, सांस्कृतिक स्मृति र पुर्खाको ज्ञान प्रस्तुत गर्दछ।";
+    }
+    else if (playId == "damini-bhir")
+    {
+        playTitleEn = "Damini Bhir"; playTitleNp = "दमिनी भीर";
+        playYear = "2023 AD";
+        playImage = "/images/damanibhir.jpg";
+        playDescEn = "Staged at Mandala Theatre in 2023, Kiran Chamling Rai handled the responsibility of Music Design and Choreography, showcasing his multifaceted artistic practice.";
+        playDescNp = "सन् २०२३ मा मण्डला थिएटरमा मञ्चन भएको, किरण चाम्लिङ राईले संगीत डिजाइन तथा नृत्य संयोजनको जिम्मेवारी सम्हाल्नुभएको थियो, जसले उहाँको बहुविध कलात्मक अभ्यास देखाउँछ।";
+    }
+    else if (playId == "a-search-for-a-dream")
+    {
+        playTitleEn = "A Search for a Dream"; playTitleNp = "एउटा सपनाको खोजी";
+        playYear = "2064 B.S.";
+        playImage = "/images/searchdream.jpg";
+        playDescEn = "A theatrical performance where Kiran Chamling Rai contributed as an actor, exploring the depths of human aspirations.";
+        playDescNp = "एउटा नाट्य प्रस्तुति जहाँ किरण चाम्लिङ राईले अभिनेताको रूपमा योगदान गर्नुभयो, मानवीय आकांक्षाको गहिराइलाई अन्वेषण गर्दै।";
+    }
+    else if (playId == "a-question")
+    {
+        playTitleEn = "A Question"; playTitleNp = "एउटा प्रश्न";
+        playYear = "2064 B.S.";
+        playImage = "/images/aquestion.jpg";
+        playDescEn = "An acting credit that questions societal norms and explores the complexities of human existence.";
+        playDescNp = "एउटा अभिनय क्रेडिट जसले सामाजिक मान्यताहरूलाई प्रश्न गर्दछ र मानव अस्तित्वको जटिलताहरूको अन्वेषण गर्दछ।";
+    }
+    else if (playId == "time-and-violence")
+    {
+        playTitleEn = "Time and Violence"; playTitleNp = "समय र हिंसा";
+        playYear = "2069 B.S.";
+        playImage = "/images/timevoilence.jpg";
+        playDescEn = "A play delving into the intricate relationship between the passage of time and the impact of violence on society.";
+        playDescNp = "समय बित्दै जाँदा र हिंसाको समाजमा पर्ने प्रभावबीचको जटिल सम्बन्धको अन्वेषण गर्ने नाटक।";
+    }
+    else if (playId == "nari")
+    {
+        playTitleEn = "Woman (Nari)"; playTitleNp = "नारी";
+        playYear = "2069 B.S.";
+        playImage = "/images/nari.png"; // 👈 .png छ
+        playDescEn = "Performed in around 25 districts across Nepal, this play highlights the struggles and resilience of women in society.";
+        playDescNp = "नेपालका करिब २५ जिल्लामा प्रदर्शन भएको यो नाटकले समाजमा महिलाहरूको संघर्ष र लचकतालाई उजागर गर्दछ।";
+    }
+    else if (playId == "ke-lageu-halkale")
+    {
+        playTitleEn = "Ke Lageu Halkale"; playTitleNp = "के लगेउ हल्काले";
+        playYear = "2070 B.S.";
+        playImage = "/images/kelageu.jpg";
+        playDescEn = "A widely toured play performed in around 30 districts, known for its engaging narrative and social commentary.";
+        playDescNp = "करिब ३० जिल्लामा प्रदर्शन भएको व्यापक रूपमा भ्रमण गरिएको नाटक, जुन आफ्नो रोचक कथा र सामाजिक टिप्पणीका लागि परिचित छ।";
+    }
+    else if (playId == "coma")
+    {
+        playTitleEn = "COMA – A Political Sex"; playTitleNp = "COMA – A Political Sex";
+        playYear = "2070 B.S.";
+        playImage = "/images/coma.jpg";
+        playDescEn = "A provocative theatrical piece exploring the intersections of politics, society, and human relationships.";
+        playDescNp = "राजनीति, समाज र मानवीय सम्बन्धहरूको प्रतिच्छेदनको अन्वेषण गर्ने एक उत्तेजक नाट्य कृति।";
+    }
+    else if (playId == "majipa-lakhey")
+    {
+        playTitleEn = "Majipa Lakhey"; playTitleNp = "मजिपा लाखे";
+        playYear = "2070 B.S.";
+        playImage = "/images/majipa.jpg";
+        playDescEn = "A cultural play drawing from Newar traditions and mythology, bringing the legend of Majipa Lakhey to life.";
+        playDescNp = "नेवारी परम्परा र पौराणिक कथाहरूबाट प्रेरित सांस्कृतिक नाटक, जसले मजिपा लाखेको किंवदन्तीलाई जीवन्त बनाउँछ।";
+    }
+    else if (playId == "harjeet")
+    {
+        playTitleEn = "Harjeet"; playTitleNp = "हारजीत";
+        playYear = "2071 B.S.";
+        playImage = "/images/harjeet.jpg";
+        playDescEn = "A theatrical exploration of victory, defeat, and the human spirit in the face of adversity.";
+        playDescNp = "विजय, पराजय र प्रतिकूलताको सामना गर्दा मानवीय भावनाको नाटकीय अन्वेषण।";
+    }
+}
+
+<style>
+    .play-details-wrapper {
+        background-color: #0b1320;
+        color: #ffffff;
+        min-height: 100vh;
+        padding: 5rem 1.5rem;
+        font-family: 'Mukta', sans-serif;
+    }
+
+    .play-details-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 400px 1fr;
+        gap: 4rem;
+        align-items: start;
+    }
+
+    .play-image-wrap {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        border: 2px solid rgba(212, 175, 55, 0.2);
+        background: #152238;
+        min-height: 400px; /* फोटो नभएमा पनि ठाउँ ओगट्छ */
+    }
+
+        .play-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+    .play-content-wrap {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .play-kicker {
+        color: #d4af37;
+        font-size: 0.85rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .play-title-en {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.8rem;
+        color: #ffffff;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .play-tags {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .play-tag {
+        background: rgba(212, 175, 55, 0.1);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        color: #d4af37;
+        padding: 0.4rem 1rem;
+        border-radius: 5px;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+    .play-synopsis-title {
+        color: #d4af37;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #23324d;
+        padding-bottom: 0.5rem;
+        display: inline-block;
+    }
+
+    .play-synopsis p {
+        color: #d1d5db;
+        font-size: 1.1rem;
+        line-height: 1.9;
+        margin-bottom: 1.5rem;
+        text-align: justify;
+    }
+
+    .back-btn {
+        display: inline-block;
+        margin-top: 2rem;
+        background: #d4af37;
+        color: #0b1320;
+        padding: 0.8rem 2rem;
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+        align-self: flex-start;
+    }
+
+        .back-btn:hover {
+            background: #f1c95b;
+        }
+
+    @@media (max-width: 900px) {
+        .play-details-container {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .play-image-wrap {
+            max-width: 400px;
+            margin: 0 auto;
+            min-height: 300px;
+        }
+
+        .play-title-en {
+            font-size: 2.2rem;
+        }
+    }
+</style>
+
+<div class="play-details-wrapper">
+    <div class="play-details-container">
+
+        <!-- 👇 यहाँ @playImage प्रयोग गरियो -->
+        <div class="play-image-wrap">
+            <!-- फोटो लोड हुन नसकेमा onerror ले डिफल्ट फोटो देखाउँछ -->
+            <img src="@playImage" alt="@playTitleEn" onerror="this.onerror=null; this.src='/images/default-theatre.jpg';" />
+        </div>
+
+        <div class="play-content-wrap">
+            <span class="play-kicker" data-en="Theatre Production" data-ne="रंगमञ्चीय प्रस्तुति">Theatre Production</span>
+
+            <h1 class="play-title-en" data-en="@playTitleEn" data-ne="@playTitleNp">@playTitleEn</h1>
+
+            <div class="play-tags">
+                <span class="play-tag" data-en="Year: @playYear" data-ne="वर्ष: @playYear">Year: @playYear</span>
+            </div>
+
+            <h3 class="play-synopsis-title" data-en="Synopsis" data-ne="सारांश">Synopsis</h3>
+            <div class="play-synopsis">
+                <p data-en="@playDescEn" data-ne="@playDescNp">@playDescEn</p>
+            </div>
+
+            <a asp-controller="Home" asp-action="TheatreWorks" class="back-btn" data-en="← Back to Theatre Works" data-ne="← थिएटर वर्क्समा फर्कनुहोस्">
+                ← Back to Theatre Works
+            </a>
+        </div>
+
+    </div>
+</div>

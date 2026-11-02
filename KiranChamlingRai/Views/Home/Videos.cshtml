@@ -1,0 +1,404 @@
+﻿@{
+    ViewData["Title"] = "Videos & Interviews | भिडियो तथा अन्तर्वार्ता";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .media-page-wrapper {
+        background-color: #0b1320;
+        color: #fff;
+        min-height: 100vh;
+        padding: 5rem 1.5rem;
+        font-family: 'Mukta', sans-serif;
+    }
+
+    .media-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .media-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+        .media-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .media-header p {
+            color: #a0aabf;
+            font-size: 1.1rem;
+        }
+
+    /* =========================================
+           FEATURED VIDEO (मुख्य भिडियो)
+           ========================================= */
+    .featured-video {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 0;
+        background: #152238; /* 👈 सेतोबाट गाढा नीलो बनाइयो */
+        border: 1px solid #23324d;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 4rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .featured-thumb {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: #000;
+        cursor: pointer;
+        display: block;
+    }
+
+        .featured-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-thumb iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .featured-thumb .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 50px;
+            background: rgba(255, 0, 0, 0.9);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            transition: background 0.3s ease;
+        }
+
+        .featured-thumb:hover .play-button {
+            background: #ff0000;
+        }
+
+    .featured-info {
+        padding: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+        .featured-info h2 {
+            color: #ffffff; /* 👈 शीर्षक सेतो बनाइयो */
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .featured-info p {
+            color: #a0aabf; /* 👈 विवरण फिक्का खैरो बनाइयो */
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .featured-info .watch-button {
+            display: inline-block;
+            text-align: center;
+            padding: 0.8rem 2rem;
+            border: 1px solid #d4af37; /* 👈 सुनौलो बोर्डर */
+            color: #d4af37; /* 👈 सुनौलो अक्षर */
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+            .featured-info .watch-button:hover {
+                background: #d4af37;
+                color: #0b1320;
+            }
+
+    /* =========================================
+           MORE VIDEOS GRID
+           ========================================= */
+    .more-videos-title {
+        color: #d4af37;
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid #23324d;
+        padding-bottom: 0.5rem;
+        display: inline-block;
+    }
+
+    .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2rem;
+    }
+
+    .video-card {
+        background: #152238; /* 👈 कार्डको ब्याकग्राउन्ड गाढा नीलो */
+        border: 1px solid #23324d;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .video-card .thumb {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            cursor: pointer;
+            display: block;
+        }
+
+            .video-card .thumb img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .video-card .thumb iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
+
+            .video-card .thumb .play-button {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 60px;
+                height: 42px;
+                background: rgba(255, 0, 0, 0.9);
+                color: white;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                transition: background 0.3s ease;
+            }
+
+        .video-card:hover .thumb .play-button {
+            background: #ff0000;
+        }
+
+        .video-card .info {
+            padding: 1.5rem;
+            background: #152238; /* 👈 कन्टेन्टको ब्याकग्राउन्ड पनि गाढा नीलो */
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-card h3 {
+            color: #ffffff; /* 👈 शीर्षक सेतो */
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .video-card p {
+            color: #a0aabf; /* 👈 विवरण फिक्का खैरो */
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+    .watch-btn {
+        display: block;
+        text-align: center;
+        padding: 0.8rem;
+        border: 1px solid #d4af37; /* 👈 सुनौलो बोर्डर */
+        color: #d4af37; /* 👈 सुनौलो अक्षर */
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin-top: auto;
+        background: transparent;
+        width: 100%;
+        cursor: pointer;
+        font-family: inherit;
+    }
+
+        .watch-btn:hover {
+            background: #d4af37;
+            color: #0b1320;
+        }
+
+    /* Responsive */
+    @@media (max-width: 900px) {
+        .featured-video {
+            grid-template-columns: 1fr;
+        }
+
+        .featured-info {
+            padding: 1.5rem;
+        }
+
+            .featured-info .watch-button {
+                align-self: stretch;
+            }
+    }
+</style>
+
+<div class="media-page-wrapper">
+    <div class="media-container">
+
+        <div class="media-header">
+            <h1 data-en="Video Interviews & Conversations" data-ne="भिडियो अन्तर्वार्ता तथा कुराकानी">Video Interviews &amp; Conversations</h1>
+            <p data-en="Explore interviews, literary conversations, and discussions featuring Kiran Chamling Rai." data-ne="किरण चाम्लिङ राई सम्मिलित अन्तर्वार्ता, साहित्यिक कुराकानी र छलफलहरू हेर्नुहोस्।">
+                Explore interviews, literary conversations, and discussions featuring Kiran Chamling Rai.
+            </p>
+        </div>
+
+        <!-- Featured Video (Jokhana) -->
+        <div class="featured-video">
+            <!-- फोटोमा क्लिक गर्दा त्यहीँ चल्ने (Inline) -->
+            <div class="featured-thumb" id="featured-thumb" onclick="playVideo('featured-thumb', 's3k3soDFrNY')">
+                <img src="https://img.youtube.com/vi/s3k3soDFrNY/hqdefault.jpg" alt="Featured Video" />
+                <span class="play-button">▶</span>
+            </div>
+            <div class="featured-info">
+                <h2 data-en="Featured: Jokhana & Theatre" data-ne="विशेष: जोखना र रंगमञ्च">Featured: Jokhana &amp; Theatre</h2>
+                <p data-en="A detailed discussion covering the creation of Jokhana, the Nepali theatre scene, and his creative vision." data-ne="जोखना नाटकको निर्माण, नेपाली रंगमञ्चको अवस्था र उनको सिर्जनात्मक दृष्टिकोण समेटिएको विस्तृत कुराकानी।">
+                    A detailed discussion covering the creation of Jokhana, the Nepali theatre scene, and his creative vision.
+                </p>
+                <!-- Watch on YouTube (नयाँ पेजमा खुल्ने) -->
+                <a class="watch-button" href="https://www.youtube.com/watch?v=s3k3soDFrNY" target="_blank" data-en="WATCH ON YOUTUBE" data-ne="YOUTUBE मा हेर्नुहोस्">WATCH ON YOUTUBE</a>
+            </div>
+        </div>
+
+        <!-- More Videos -->
+        <h2 class="more-videos-title" data-en="More Interviews" data-ne="थप अन्तर्वार्ताहरू">More Interviews</h2>
+
+        <div class="video-grid">
+
+            <!-- Video 1 (In Conversation with Kiran) -->
+            <div class="video-card">
+                <div class="thumb" id="thumb-1" onclick="playVideo('thumb-1', 'mXA5vsTOhrE')">
+                    <img src="https://img.youtube.com/vi/mXA5vsTOhrE/hqdefault.jpg" alt="Interview 1" />
+                    <span class="play-button">▶</span>
+                </div>
+                <div class="info">
+                    <h3 data-en="In Conversation with Kiran" data-ne="किरणसँगको कुराकानी">In Conversation with Kiran</h3>
+                    <p data-en="Watch interviews and conversations on YouTube." data-ne="YouTube मा अन्तर्वार्ता तथा कुराकानी हेर्नुहोस्।">Watch interviews and conversations on YouTube.</p>
+                    <a href="https://www.youtube.com/watch?v=mXA5vsTOhrE" target="_blank" class="watch-btn">Watch on YouTube</a>
+                </div>
+            </div>
+
+            <!-- Video 2 (Theatre & Directing) -->
+            <div class="video-card">
+                <div class="thumb" id="thumb-2" onclick="playVideo('thumb-2', '47xRg3BgOsI')">
+                    <img src="https://img.youtube.com/vi/47xRg3BgOsI/hqdefault.jpg" alt="Interview 2" />
+                    <span class="play-button">▶</span>
+                </div>
+                <div class="info">
+                    <h3 data-en="Theatre & Directing" data-ne="रङ्गमञ्च र निर्देशन">Theatre &amp; Directing</h3>
+                    <p data-en="A conversation about the process of directing plays." data-ne="नाटक निर्देशनको प्रक्रियाको बारेमा कुराकानी।">A conversation about the process of directing plays.</p>
+                    <a href="https://www.youtube.com/watch?v=47xRg3BgOsI" target="_blank" class="watch-btn">Watch on YouTube</a>
+                </div>
+            </div>
+
+            <!-- Video 3 (Acting & Performance) -->
+            <div class="video-card">
+                <div class="thumb" id="thumb-3" onclick="playVideo('thumb-3', 'veF1XNxwhh0')">
+                    <img src="https://img.youtube.com/vi/veF1XNxwhh0/hqdefault.jpg" alt="Interview 3" />
+                    <span class="play-button">▶</span>
+                </div>
+                <div class="info">
+                    <h3 data-en="Acting & Performance" data-ne="अभिनय र प्रस्तुति">Acting &amp; Performance</h3>
+                    <p data-en="Discussing the nuances of acting on stage and screen." data-ne="मञ्च र पर्दामा अभिनयको सूक्ष्मताको बारेमा छलफल।">Discussing the nuances of acting on stage and screen.</p>
+                    <a href="https://www.youtube.com/watch?v=veF1XNxwhh0" target="_blank" class="watch-btn">Watch on YouTube</a>
+                </div>
+            </div>
+
+            <!-- Video 4 (Literature & Culture) -->
+            <div class="video-card">
+                <div class="thumb" id="thumb-4" onclick="playVideo('thumb-4', '3_Xl6uuJ8N8')">
+                    <img src="https://img.youtube.com/vi/3_Xl6uuJ8N8/hqdefault.jpg" alt="Interview 4" />
+                    <span class="play-button">▶</span>
+                </div>
+                <div class="info">
+                    <h3 data-en="Literature & Culture" data-ne="साहित्य र संस्कृति">Literature &amp; Culture</h3>
+                    <p data-en="Exploring the connection between literature and theatre." data-ne="साहित्य र रंगमञ्च बीचको सम्बन्धको अन्वेषण।">Exploring the connection between literature and theatre.</p>
+                    <a href="https://www.youtube.com/watch?v=3_Xl6uuJ8N8" target="_blank" class="watch-btn">Watch on YouTube</a>
+                </div>
+            </div>
+
+            <!-- Video 5 (Life & Journey) -->
+            <div class="video-card">
+                <div class="thumb" id="thumb-5" onclick="playVideo('thumb-5', '-ilw6FJApxA')">
+                    <img src="https://img.youtube.com/vi/-ilw6FJApxA/hqdefault.jpg" alt="Interview 5" />
+                    <span class="play-button">▶</span>
+                </div>
+                <div class="info">
+                    <h3 data-en="Life & Journey" data-ne="जीवन र यात्रा">Life &amp; Journey</h3>
+                    <p data-en="A personal look into his life and creative journey." data-ne="उनको जीवन र सिर्जनात्मक यात्रामा व्यक्तिगत झलक।">A personal look into his life and creative journey.</p>
+                    <a href="https://www.youtube.com/watch?v=-ilw6FJApxA" target="_blank" class="watch-btn">Watch on YouTube</a>
+                </div>
+            </div>
+
+            <!-- Video 6 (Upcoming Projects) -->
+            <div class="video-card">
+                <div class="thumb" id="thumb-6" onclick="playVideo('thumb-6', 'gr1vGkOt9qg')">
+                    <img src="https://img.youtube.com/vi/gr1vGkOt9qg/hqdefault.jpg" alt="Interview 6" />
+                    <span class="play-button">▶</span>
+                </div>
+                <div class="info">
+                    <h3 data-en="Upcoming Projects" data-ne="आगामी परियोजनाहरू">Upcoming Projects</h3>
+                    <p data-en="Discussions about future theatre and film projects." data-ne="भविष्यका नाटक र चलचित्र परियोजनाहरूको बारेमा छलफल।">Discussions about future theatre and film projects.</p>
+                    <a href="https://www.youtube.com/watch?v=gr1vGkOt9qg" target="_blank" class="watch-btn">Watch on YouTube</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- =========================================
+     JAVASCRIPT TO PLAY VIDEO INLINE
+     ========================================= -->
+<script>
+    function playVideo(elementId, videoId) {
+        const element = document.getElementById(elementId);
+
+        // भिडियोको फोटो र प्ले बटन हटाएर YouTube iframe राख्ने
+        element.innerHTML = `
+                <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1"
+                        allow="autoplay; encrypted-media"
+                        allowfullscreen>
+                </iframe>
+            `;
+
+        // क्लिक गरेपछि अरू क्लिक नहुने बनाउने
+        element.style.cursor = "default";
+        element.onclick = null;
+    }
+</script>

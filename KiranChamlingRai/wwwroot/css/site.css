@@ -1,0 +1,904 @@
+/* =========================================
+   KIRAN CHAMLING RAI - PORTFOLIO WEBSITE
+   Theme: Navy Blue + Gold
+   ========================================= */
+
+/* ---------- COLORS & RESET ---------- */
+:root {
+    --navy: #081629;
+    --navy-light: #10243d;
+    --navy-card: #122840;
+    --gold: #d7b36a;
+    --gold-light: #f0d89e;
+    --white: #f7f8fb;
+    --text: #d4dce7;
+    --muted: #a4b0c0;
+    --border: rgba(215, 179, 106, 0.25);
+    --section-bg: #0c1d31;
+    --radius: 14px;
+    --container: 1160px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button, input, textarea {
+    font: inherit;
+}
+
+button, a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+    button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+        outline: 2px solid var(--gold);
+        outline-offset: 3px;
+    }
+
+::selection {
+    background: var(--gold);
+    color: var(--navy);
+}
+
+/* ---------- HEADER & NAVIGATION ---------- */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px max(4%, calc((100% - var(--container)) / 2));
+    background: rgba(8, 22, 41, 0.97);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    width: 100%;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.brand-mark {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    color: var(--gold);
+    font-family: Georgia, serif;
+    font-weight: 700;
+}
+
+.brand strong {
+    display: block;
+    color: var(--white);
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.brand small {
+    display: block;
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+    .main-nav > a, .dropdown-toggle {
+        position: relative;
+        display: block;
+        padding: 8px 0;
+        color: var(--text);
+        font-size: 13px;
+        transition: color 0.2s;
+    }
+
+        .main-nav > a:hover, .dropdown-toggle:hover, .main-nav a.nav-active {
+            color: var(--gold);
+        }
+
+.language-switcher {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+}
+
+.language-btn {
+    padding: 6px 11px;
+    border: 1px solid var(--gold);
+    border-radius: 22px;
+    background: transparent;
+    color: var(--gold-light);
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.2s, color 0.2s;
+}
+
+    .language-btn:hover, .language-btn.active {
+        background: var(--gold);
+        color: var(--navy);
+    }
+
+.menu-toggle {
+    display: none;
+    border: 0;
+    background: transparent;
+    color: var(--gold);
+    cursor: pointer;
+    font-size: 28px;
+    line-height: 1;
+}
+
+/* Dropdown */
+.nav-dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1100;
+    display: none;
+    min-width: 220px;
+    padding: 6px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--navy-light);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 9px 12px;
+    border-radius: 5px;
+    color: var(--text);
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+    .dropdown-menu a:hover {
+        background: var(--navy-card);
+        color: var(--gold);
+    }
+
+/* ---------- HERO SECTION ---------- */
+.hero-section {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.75fr);
+    align-items: center;
+    gap: 28px;
+    width: min(92%, var(--container));
+    min-height: 550px;
+    margin: 0 auto;
+    padding: 45px 0 55px;
+}
+
+.hero-content {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    max-width: 620px;
+}
+
+.eyebrow, .section-kicker {
+    margin-bottom: 12px;
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+
+.hero-content h1 {
+    margin-bottom: 15px;
+    color: var(--white);
+    font-family: Georgia, serif;
+    font-size: clamp(38px, 4.5vw, 65px);
+    font-weight: 500;
+    line-height: 1.12;
+}
+
+.hero-content h2 {
+    margin-bottom: 14px;
+    color: var(--gold-light);
+    font-family: Georgia, serif;
+    font-size: clamp(20px, 2.2vw, 29px);
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.hero-content > p:not(.eyebrow) {
+    max-width: 520px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 19px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    transition: transform 0.2s, background 0.2s;
+}
+
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+
+.btn-gold {
+    background: var(--gold);
+    color: var(--navy);
+}
+
+    .btn-gold:hover {
+        background: var(--gold-light);
+    }
+
+.btn-outline {
+    border-color: var(--gold);
+    background: transparent;
+    color: var(--gold-light);
+}
+
+    .btn-outline:hover {
+        background: rgba(215, 179, 106, 0.12);
+    }
+
+.hero-image-wrap {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portrait-frame {
+    position: relative;
+    width: 100%;
+    max-width: 330px;
+    padding: 9px;
+    border: 1px solid var(--gold);
+    border-radius: 155px 155px 16px 16px;
+    background: linear-gradient(145deg, rgba(215, 179, 106, 0.15), rgba(16, 36, 61, 0.5));
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.22);
+}
+
+.hero-portrait {
+    width: 100%;
+    height: 390px;
+    border-radius: 145px 145px 10px 10px;
+    background: var(--navy-light);
+    object-fit: cover;
+    object-position: center top;
+}
+/* ---------- TEXT LINK (Explore Selected Works) ---------- */
+.text-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: #d4af37; /* 👈 यसले सुनौलो रङ दिन्छ */
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+    .text-link:hover {
+        color: #f0d89e; /* 👈 माउस लैजाँदा अझ चम्किलो सुनौलो हुन्छ */
+    }
+/* ---------- GENERAL CONTENT ---------- */
+.content-section {
+    padding: 25px max(4%, calc((100% - var(--container)) / 2));
+}
+
+    .content-section > h2 {
+        margin-bottom: 18px;
+        color: var(--white);
+        font-family: Georgia, serif;
+        font-size: clamp(30px, 3.5vw, 40px);
+        font-weight: 500;
+        line-height: 1.3;
+    }
+
+    .content-section > p:not(.section-kicker) {
+        max-width: 780px;
+        color: var(--muted);
+    }
+
+.alternate-section {
+    background: var(--section-bg);
+}
+
+/* ---------- BIOGRAPHY SECTION ---------- */
+.biography-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: start;
+    gap: 30px;
+    margin-top: 28px;
+}
+
+    .biography-grid h3, .subheading {
+        margin-bottom: 14px;
+        color: var(--gold-light);
+        font-family: Georgia, serif;
+        font-size: 22px;
+        font-weight: 500;
+    }
+
+    .biography-grid > div:first-child p {
+        margin-bottom: 15px;
+        color: var(--text);
+    }
+
+.detail-card {
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--navy-light);
+}
+
+    .detail-card h3 {
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .detail-card p {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 14px;
+    }
+
+    .detail-card strong {
+        color: var(--gold-light);
+    }
+
+/* =========================================
+   THEATRE WORKS & FILM & DIRECTION (Combined for equal height)
+   ========================================= */
+.theatre-section, .fd-section {
+    padding: 3rem 5%;
+    background-color: transparent;
+}
+
+.theatre-header, .fd-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+    .theatre-header h2, .fd-header h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.2rem;
+        color: #ffffff;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .theatre-header p, .fd-header p {
+        color: #a0aabf;
+        font-size: 0.95rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+.theatre-grid, .fd-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+.theatre-card, .fd-card {
+    background: #152238;
+    border: 1px solid #23324d;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+    .theatre-card:hover, .fd-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        border-color: rgba(212, 175, 55, 0.4);
+    }
+
+.card-image, .fd-image-wrap {
+    width: 100%;
+    height: 180px; /* 👈 दुवै सेक्सनको फोटो उचाई एकैनासको */
+    overflow: hidden;
+    background-color: #0b1320;
+}
+
+    .card-image img, .fd-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+.theatre-card:hover .card-image img,
+.fd-card:hover .fd-image {
+    transform: scale(1.05);
+}
+
+.card-content, .fd-content {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-year, .fd-role {
+    display: inline-block;
+    color: #d4af37;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.card-content h3, .fd-title {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.card-content p, .fd-desc {
+    color: #a0aabf;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+    flex-grow: 1;
+}
+
+/* Read More Button */
+.read-more-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #0b1320;
+    border: 1px solid #23324d;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    margin-top: auto;
+    align-self: flex-start;
+    font-family: 'Mukta', sans-serif;
+}
+
+    .read-more-btn:hover {
+        background: #d4af37;
+        color: #0b1320;
+        border-color: #d4af37;
+    }
+
+/* ---------- AWARDS SECTION ---------- */
+.awards-section {
+    padding: 4rem 1.5rem;
+    background-color: #0b1320;
+}
+
+.awards-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.awards-header {
+    margin-bottom: 2rem;
+}
+
+    .awards-header h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        color: #ffffff;
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+    }
+
+.award-card {
+    background: linear-gradient(145deg, #152238 0%, #0d1625 100%);
+    border: 1px solid #23324d;
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+    .award-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(212, 175, 55, 0.5);
+        box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+    }
+
+.award-icon {
+    background: rgba(212, 175, 55, 0.1);
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+    .award-icon svg {
+        width: 24px;
+        height: 24px;
+        color: #d4af37;
+    }
+
+.award-content h3 {
+    color: #ffffff;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.award-content p {
+    color: #a0aabf;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.award-year {
+    color: #d4af37;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* ---------- MEDIA SECTION ---------- */
+.media-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.media-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+    .media-header h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        color: #ffffff;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .media-header p {
+        color: #a0aabf;
+        font-size: 1.1rem;
+    }
+
+.interview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.interview-card {
+    /* 👇 कार्डको ब्याकग्राउन्ड गाढा नीलो बनाइयो */
+    background: #152238;
+    border: 1px solid #23324d;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+    .interview-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(212, 175, 55, 0.4);
+    }
+
+.video-thumbnail {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+}
+
+    .video-thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 42px;
+    background: rgba(255, 0, 0, 0.9);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.interview-content {
+    padding: 1.5rem;
+    /* 👇 कन्टेन्टको ब्याकग्राउन्ड पनि गाढा नीलो बनाइयो */
+    background: #152238;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+    .interview-content h3 {
+        /* 👇 शीर्षक सेतो बनाइयो */
+        color: #ffffff;
+        font-size: 1.3rem;
+        font-family: 'Playfair Display', serif;
+        margin-bottom: 0.8rem;
+    }
+
+    .interview-content p {
+        /* 👇 विवरण फिक्का खैरो बनाइयो */
+        color: #a0aabf;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+.watch-button {
+    display: block;
+    text-align: center;
+    padding: 0.8rem;
+    /* 👇 बटनलाई सुनौलो बोर्डर र अक्षर बनाइयो */
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    font-weight: 600;
+    margin-top: auto;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+    .watch-button:hover {
+        background: #d4af37;
+        color: #0b1320;
+    }
+
+/* ---------- FOOTER ---------- */
+.site-footer {
+    padding: 28px 5%;
+    border-top: 1px solid var(--border);
+    background: #06101e;
+    text-align: center;
+}
+
+.footer-brand {
+    color: var(--gold);
+    font-family: Georgia, serif;
+    font-size: 20px;
+}
+
+.site-footer p {
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (Mobile View Fixed)
+   ========================================= */
+@media (max-width: 850px) {
+    .site-header {
+        flex-wrap: wrap;
+        padding: 12px 5%;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-nav {
+        display: none;
+        order: 4;
+        flex-basis: 100%;
+        flex-direction: column;
+        gap: 0;
+        padding: 10px 0;
+        /* 👇 यसले मेनुहरूलाई बायाँतिर (Left) मिलाउँछ */
+        align-items: flex-start; 
+    }
+
+    .main-nav.open, .main-nav.nav-open {
+        display: flex;
+    }
+
+    .main-nav > a, .dropdown-toggle {
+        /* 👇 प्याडिङ बढाएर लेखालाई अलि भित्र सारिएको छ */
+        padding: 12px 25px; 
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        font-size: 14px;
+        margin: 0;
+        text-align: left;
+        width: 100%;
+    }
+
+    .nav-dropdown {
+        width: 100%;
+        text-align: left;
+    }
+
+    .dropdown-menu {
+        position: static;
+        width: 100%;
+        border: 0;
+        background: var(--navy-light);
+        box-shadow: none;
+        padding-left: 20px; /* ड्रपडाउन भित्रको लिंक अलि भित्र */
+    }
+
+    .dropdown-menu a {
+        padding: 10px 20px;
+        text-align: left;
+    }
+
+    /* ... तलको hero-section, biography-grid आदिको कोड उही रहन्छ ... */
+    .hero-section {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        min-height: auto;
+        padding: 30px 0 40px;
+    }
+
+    .hero-content {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .hero-image-wrap {
+        grid-column: 1;
+        grid-row: 1;
+        margin-bottom: 20px;
+    }
+
+    .biography-grid, .interview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .content-section {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+}
+/* View All Interviews Wrapper */
+.view-all-wrapper {
+    text-align: center; /* 👈 यसले बटनलाई बीचमा ल्याउँछ */
+    margin-top: 3rem;
+    width: 100%;
+}
+
+/* View All Interviews Button */
+.view-all-btn {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid #d4af37; /* 👈 सुनौलो बोर्डर */
+    color: #d4af37; /* 👈 सुनौलो अक्षर */
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    font-family: 'Mukta', sans-serif;
+}
+
+    .view-all-btn:hover {
+        background: #d4af37; /* 👈 होभर गर्दा सुनौलो ब्याकग्राउन्ड */
+        color: #0b1320; /* 👈 अक्षर कालो */
+    }
+/* Read More Button */
+.read-more-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #0b1320;
+    border: 1px solid #23324d;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    /* 👇 यसले बटनलाई बीचमा ल्याउँछ */
+    margin: 0 auto;
+    align-self: center;
+    text-align: center;
+    margin-top: auto;
+    font-family: 'Mukta', sans-serif;
+}
+
+    .read-more-btn:hover {
+        background: #d4af37;
+        color: #0b1320;
+        border-color: #d4af37;
+    }

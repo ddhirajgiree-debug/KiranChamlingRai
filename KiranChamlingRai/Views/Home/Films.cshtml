@@ -1,0 +1,396 @@
+﻿@{
+    ViewData["Title"] = "Film & Direction | चलचित्र तथा निर्देशन";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    /* =========================================
+               FILM & DIRECTION PAGE STYLES
+               ========================================= */
+    .fd-page-wrapper {
+        background-color: #0b1320;
+        color: #ffffff;
+        min-height: 100vh;
+        padding: 5rem 1.5rem;
+        font-family: 'Georgia', 'Mukta', serif;
+    }
+
+    .fd-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Header */
+    .fd-header {
+        text-align: center;
+        margin-bottom: 5rem;
+    }
+
+        .fd-header span.kicker {
+            color: #d4af37;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .fd-header h1 {
+            font-size: 3rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .fd-header p {
+            color: #a0aabf;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+    /* =========================================
+               MAIN FEATURED WORKS
+               ========================================= */
+    .fd-featured-list {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-bottom: 5rem;
+    }
+
+    .fd-featured-card {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 0;
+        background: #152238;
+        border: 1px solid #23324d;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        align-items: stretch;
+    }
+
+        .fd-featured-card:hover {
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+    .fd-featured-image {
+        width: 100%;
+        height: 100%;
+        min-height: 250px;
+        max-height: 300px;
+        object-fit: cover;
+        background-color: #1a2332; /* फोटो लोड हुँदै गर्दा देखिने रंग */
+    }
+
+    .fd-featured-content {
+        padding: 2rem 2.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+        .fd-featured-content .fd-year {
+            color: #d4af37;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .fd-featured-content h3 {
+            color: #ffffff;
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .fd-featured-content p {
+            color: #a0aabf;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+    /* 👇 Read More Button (थिएटर जस्तै) */
+    .read-more-btn {
+        display: inline-block;
+        padding: 0.6rem 1.5rem;
+        background: #0b1320;
+        border: 1px solid #23324d;
+        color: #ffffff;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        text-align: center;
+        margin-top: 1rem;
+        align-self: flex-start;
+        font-family: 'Mukta', sans-serif;
+    }
+
+        .read-more-btn:hover {
+            background: #d4af37;
+            color: #0b1320;
+            border-color: #d4af37;
+        }
+
+    /* =========================================
+               INFO BOXES (For TV & Radio)
+               ========================================= */
+    .fd-section-title {
+        color: #d4af37;
+        font-size: 1.8rem;
+        font-family: 'Playfair Display', serif;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid #23324d;
+        padding-bottom: 0.5rem;
+        display: inline-block;
+    }
+
+    .fd-info-box {
+        background: rgba(212, 175, 55, 0.05);
+        border-left: 4px solid #d4af37;
+        padding: 2rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+    }
+
+        .fd-info-box h4 {
+            color: #d4af37;
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .fd-info-box p {
+            color: #d1d5db;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin: 0;
+            text-align: justify;
+        }
+
+    /* Responsive */
+    @@media (max-width: 900px) {
+        .fd-featured-card {
+            grid-template-columns: 1fr;
+        }
+
+        .fd-featured-image {
+            min-height: 200px;
+            max-height: 250px;
+        }
+
+        .fd-featured-content {
+            padding: 2rem;
+        }
+
+            .fd-featured-content h3 {
+                font-size: 1.6rem;
+            }
+    }
+</style>
+
+<div class="fd-page-wrapper">
+    <div class="fd-container">
+
+        <!-- Header -->
+        <div class="fd-header">
+            <h1 data-en="Film & Direction" data-ne="चलचित्र तथा निर्देशन">Film &amp; Direction</h1>
+            <p data-en="His screen credits include acting and assistant direction across Nepali film projects, television, and video editing." data-ne="उनको पर्दाको अनुभवमा नेपाली चलचित्र परियोजनाहरूमा अभिनय र सहायक निर्देशन, टेलिभिजन तथा भिडियो सम्पादन समावेश छन्।">
+                His screen credits include acting and assistant direction across Nepali film projects, television, and video editing.
+            </p>
+        </div>
+
+        <!-- =========================================
+             1. Assistant Direction
+             ========================================= -->
+        <h2 class="fd-section-title" data-en="Assistant Direction" data-ne="सहायक निर्देशन">Assistant Direction</h2>
+        <div class="fd-featured-list">
+
+            <!-- Jari -->
+            <article class="fd-featured-card">
+                <img src="@Url.Content("~/images/jaari.jpg")"
+                     onerror="this.onerror=null; this.src='https://via.placeholder.com/320x300/152238/d4af37?text=Jari';"
+                     class="fd-featured-image" alt="Jari" />
+                <div class="fd-featured-content">
+                    <span class="fd-year" data-en="Feature Film" data-ne="कथानक चलचित्र">Feature Film</span>
+                    <h3 data-en="Jari" data-ne="जारी">Jari</h3>
+                    <p data-en="Worked as the Chief Assistant Director on this Nepali feature film, contributing to the overall production and direction process." data-ne="यस नेपाली कथानक चलचित्रमा मुख्य सहायक निर्देशकको रूपमा काम गरेका छन्, जसले समग्र निर्माण र निर्देशन प्रक्रियामा योगदान पुर्‍याएको छ।">
+                        Worked as the Chief Assistant Director on this Nepali feature film, contributing to the overall production and direction process.
+                    </p>
+                    <!-- 👇 Read More Button -->
+                    <a asp-controller="Home" asp-action="FilmDetails" asp-route-id="jari" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </article>
+
+            <!-- Mansara -->
+            <article class="fd-featured-card">
+                <img src="@Url.Content("~/images/mansara.jpg")"
+                     onerror="this.onerror=null; this.src='https://via.placeholder.com/320x300/152238/d4af37?text=Mansara';"
+                     class="fd-featured-image" alt="Mansara" />
+                <div class="fd-featured-content">
+                    <span class="fd-year" data-en="Feature Film" data-ne="कथानक चलचित्र">Feature Film</span>
+                    <h3 data-en="Mansara" data-ne="मनसरा">Mansara</h3>
+                    <p data-en="Contributed as the Chief Assistant Director and also showcased his acting skills in this film." data-ne="मुख्य सहायक निर्देशकको रूपमा योगदान गर्नुका साथै यस चलचित्रमा आफ्नो अभिनय कौशल पनि देखाएका छन्।">
+                        Contributed as the Chief Assistant Director and also showcased his acting skills in this film.
+                    </p>
+                    <a asp-controller="Home" asp-action="FilmDetails" asp-route-id="mansara" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </article>
+
+            <!-- Rimai -->
+            <article class="fd-featured-card">
+                <img src="@Url.Content("~/images/rimai.jpg")"
+                     onerror="this.onerror=null; this.src='https://via.placeholder.com/320x300/152238/d4af37?text=Rimai';"
+                     class="fd-featured-image" alt="Rimai" />
+                <div class="fd-featured-content">
+                    <span class="fd-year" data-en="Feature Film" data-ne="कथानक चलचित्र">Feature Film</span>
+                    <h3 data-en="Rimai" data-ne="रिमै">Rimai</h3>
+                    <p data-en="Served as the Chief Assistant Director, helping to bring the director's vision to life on screen." data-ne="मुख्य सहायक निर्देशकको रूपमा काम गर्दै, निर्देशकको दृष्टिकोणलाई पर्दामा जीवन्त बनाउन मद्दत गरेका छन्।">
+                        Served as the Chief Assistant Director, helping to bring the director's vision to life on screen.
+                    </p>
+                    <a asp-controller="Home" asp-action="FilmDetails" asp-route-id="rimai" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </article>
+
+            <!-- Jari 2 -->
+            <article class="fd-featured-card">
+                <img src="@Url.Content("~/images/jari2.jpg")"
+                     onerror="this.onerror=null; this.src='https://via.placeholder.com/320x300/152238/d4af37?text=Jari+2';"
+                     class="fd-featured-image" alt="Jari 2" />
+                <div class="fd-featured-content">
+                    <span class="fd-year" data-en="Feature Film" data-ne="कथानक चलचित्र">Feature Film</span>
+                    <h3 data-en="Jari 2" data-ne="जारी २">Jari 2</h3>
+                    <p data-en="Returned as the Chief Assistant Director for the sequel, managing the production team and assisting in the creative execution of the film." data-ne="सिक्वेलको लागि मुख्य सहायक निर्देशकको रूपमा फर्किए, निर्माण टोलीको व्यवस्थापन र चलचित्रको रचनात्मक कार्यान्वयनमा सहयोग गर्दै।">
+                        Returned as the Chief Assistant Director for the sequel, managing the production team and assisting in the creative execution of the film.
+                    </p>
+                    <a asp-controller="Home" asp-action="FilmDetails" asp-route-id="jari2" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- =========================================
+             2. Film Acting Credits
+             ========================================= -->
+        <h2 class="fd-section-title mt-5" data-en="Film Acting Credits" data-ne="चलचित्र अभिनय">Film Acting Credits</h2>
+        <div class="fd-featured-list">
+
+            <!-- Dokh -->
+            <article class="fd-featured-card">
+                <img src="@Url.Content("~/images/dokh.jpg")"
+                     onerror="this.onerror=null; this.src='https://via.placeholder.com/320x300/152238/d4af37?text=Dokh';"
+                     class="fd-featured-image" alt="Dokh" />
+                <div class="fd-featured-content">
+                    <span class="fd-year" data-en="Acting Role" data-ne="अभिनय भूमिका">Acting Role</span>
+                    <h3 data-en="Dokh" data-ne="दोख">Dokh</h3>
+                    <p data-en="Played a pivotal acting role in this film, bringing depth and emotion to the character, which was well-received by the audience." data-ne="यस चलचित्रमा एक महत्त्वपूर्ण अभिनय भूमिका निभाए, जसले पात्रलाई गहिराइ र भावना दियो, जसलाई दर्शकहरूले रुचाए।">
+                        Played a pivotal acting role in this film, bringing depth and emotion to the character, which was well-received by the audience.
+                    </p>
+                    <a asp-controller="Home" asp-action="FilmDetails" asp-route-id="dokh" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </article>
+
+            <!-- Saili -->
+            <article class="fd-featured-card">
+                <img src="@Url.Content("~/images/saili.jpg")"
+                     onerror="this.onerror=null; this.src='https://via.placeholder.com/320x300/152238/d4af37?text=Saili';"
+                     class="fd-featured-image" alt="Saili" />
+                <div class="fd-featured-content">
+                    <span class="fd-year" data-en="Acting Role" data-ne="अभिनय भूमिका">Acting Role</span>
+                    <h3 data-en="Saili" data-ne="साइलि">Saili</h3>
+                    <p data-en="Showcased his versatility as an actor in 'Saili', contributing to the film's narrative with a compelling performance." data-ne="'साइलि' मा एक अभिनेताको रूपमा आफ्नो बहुमुखी प्रतिभा देखाए, एक आकर्षक प्रदर्शनको साथ चलचित्रको कथामा योगदान दिए।">
+                        Showcased his versatility as an actor in 'Saili', contributing to the film's narrative with a compelling performance.
+                    </p>
+                    <a asp-controller="Home" asp-action="FilmDetails" asp-route-id="saili" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </article>
+
+            <!-- Baristha Balaram -->
+            <article class="fd-featured-card">
+                <img src="@Url.Content("~/images/barista.jpg")"
+                     onerror="this.onerror=null; this.src='https://via.placeholder.com/320x300/152238/d4af37?text=Baristha+Balaram';"
+                     class="fd-featured-image" alt="Baristha Balaram" />
+                <div class="fd-featured-content">
+                    <span class="fd-year" data-en="Acting Role" data-ne="अभिनय भूमिका">Acting Role</span>
+                    <h3 data-en="Baristha Balaram" data-ne="वरिष्ठ बलराम">Baristha Balaram</h3>
+                    <p data-en="Acted in this film, adding significant value to the storyline and character dynamics through his performance." data-ne="यस चलचित्रमा अभिनय गरे, आफ्नो प्रदर्शनको माध्यमबाट कथा र पात्रको गतिशीलतामा महत्त्वपूर्ण योगदान दिए।">
+                        Acted in this film, adding significant value to the storyline and character dynamics through his performance.
+                    </p>
+                    <a asp-controller="Home" asp-action="FilmDetails" asp-route-id="baristha-balaram" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </article>
+
+            <!-- Na Yeta Na Uta -->
+            <article class="fd-featured-card">
+                <img src="@Url.Content("~/images/naytanauta.jpg")"
+                     onerror="this.onerror=null; this.src='https://via.placeholder.com/320x300/152238/d4af37?text=Na+Yeta+Na+Uta';"
+                     class="fd-featured-image" alt="Na Yeta Na Uta" />
+                <div class="fd-featured-content">
+                    <span class="fd-year" data-en="Acting Role" data-ne="अभिनय भूमिका">Acting Role</span>
+                    <h3 data-en="Na Yeta Na Uta" data-ne="न यता न उता">Na Yeta Na Uta</h3>
+                    <p data-en="Delivered a strong performance in this film, exploring complex emotions and character arcs." data-ne="यस चलचित्रमा एक बलियो प्रदर्शन दिए, जटिल भावनाहरू र पात्रको यात्राको अन्वेषण गर्दै।">
+                        Delivered a strong performance in this film, exploring complex emotions and character arcs.
+                    </p>
+                    <a asp-controller="Home" asp-action="FilmDetails" asp-route-id="na-yeta-na-uta" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </article>
+
+            <!-- Senako Cheli -->
+            <article class="fd-featured-card">
+                <img src="@Url.Content("~/images/senako.jpg")"
+                     onerror="this.onerror=null; this.src='https://via.placeholder.com/320x300/152238/d4af37?text=Senako+Cheli';"
+                     class="fd-featured-image" alt="Senako Cheli" />
+                <div class="fd-featured-content">
+                    <span class="fd-year" data-en="Short Film" data-ne="लघु चलचित्र">Short Film</span>
+                    <h3 data-en="Senako Cheli" data-ne="नेपाली सेनाको चेली">Senako Cheli</h3>
+                    <p data-en="Acted in this short film, which was recognized at the Nepal Army Short Film Festival, highlighting his range across different formats." data-ne="यस लघु चलचित्रमा अभिनय गरे, जसलाई नेपाली सेना लघु चलचित्र महोत्सवमा मान्यता दिइएको थियो, जसले विभिन्न ढाँचाहरूमा उनको दायरालाई उजागर गर्दछ।">
+                        Acted in this short film, which was recognized at the Nepal Army Short Film Festival, highlighting his range across different formats.
+                    </p>
+                    <a asp-controller="Home" asp-action="FilmDetails" asp-route-id="senako-cheli" class="read-more-btn" data-en="READ MORE" data-ne="थप पढ्नुहोस्">थप पढ्नुहोस्</a>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- =========================================
+             3. Television, Radio & Video Editing
+             ========================================= -->
+        <h2 class="fd-section-title mt-5" data-en="Broadcast & Editing" data-ne="प्रसारण तथा सम्पादन">Broadcast &amp; Editing</h2>
+
+        <div class="fd-info-box">
+            <h4 data-en="Television & Video Editing" data-ne="टेलिभिजन तथा भिडियो सम्पादन">Television &amp; Video Editing</h4>
+            <p data-en="From 2067 to 2069 B.S., Kiran Chamling Rai worked extensively at Himshikhar Television as a control room operator and video editor. This role allowed him to understand the technical aspects of media production, from live broadcasting to post-production editing."
+               data-ne="२०६७ सालदेखि २०६९ सालसम्म किरण चाम्लिङ राईले हिमशिखर टेलिभिजनमा कन्ट्रोल रुम अपरेटर तथा भिडियो सम्पादकको रूपमा व्यापक रूपमा काम गरे। यस भूमिकाले उनलाई प्रत्यक्ष प्रसारणदेखि पोस्ट-प्रोडक्सन सम्पादनसम्मको मिडिया उत्पादनको प्राविधिक पक्षहरू बुझ्न अनुमति दियो।">
+                From 2067 to 2069 B.S., Kiran Chamling Rai worked extensively at Himshikhar Television as a control room operator and video editor. This role allowed him to understand the technical aspects of media production, from live broadcasting to post-production editing.
+            </p>
+            <p class="mt-3" data-en="Furthermore, he expanded his skills by working in video editing at Mila Production House and Point Production House. He also contributed his technical expertise to the Nepali feature film 'Jhōle'. His background in editing gives him a unique perspective on storytelling and visual rhythm, which he brings to his directorial projects."
+               data-ne="यसबाहेक, उनले Mila Production House र Point Production House मा भिडियो सम्पादन गरेर आफ्नो सीप विस्तार गरे। उनले नेपाली कथानक चलचित्र 'झोले' मा पनि आफ्नो प्राविधिक विशेषज्ञता योगदान गरे। सम्पादनमा उनको पृष्ठभूमिले उनलाई कथा भन्ने र दृश्य लयको बारेमा एक अद्वितीय दृष्टिकोण दिन्छ, जुन उनी आफ्ना निर्देशन परियोजनाहरूमा ल्याउँछन्।">
+                Furthermore, he expanded his skills by working in video editing at Mila Production House and Point Production House. He also contributed his technical expertise to the Nepali feature film 'Jhōle'. His background in editing gives him a unique perspective on storytelling and visual rhythm, which he brings to his directorial projects.
+            </p>
+        </div>
+
+        <div class="fd-info-box">
+            <h4 data-en="Radio Dramas & Music Videos" data-ne="रेडियो नाटक तथा म्युजिक भिडियो">Radio Dramas &amp; Music Videos</h4>
+            <p data-en="Beyond television and film, Rai has also made significant contributions to radio. He showcased his vocal acting skills in the radio drama 'Maisari Sunkhari', which was associated with the Anetena Foundation Nepal. He also acted in 'Mitini', a popular radio drama broadcast by Radio Sagarmatha, connecting with audiences through the power of audio storytelling."
+               data-ne="टेलिभिजन र चलचित्र बाहेक, राईले रेडियोमा पनि महत्त्वपूर्ण योगदान पुर्‍याएका छन्। उनले Anetena Foundation Nepal सँग सम्बन्धित रेडियो नाटक 'माइसरि सुनखरि' मा आफ्नो स्वर अभिनय कौशल देखाए। उनले रेडियो सगरमाथाबाट प्रसारण हुने लोकप्रिय रेडियो नाटक 'मितिनि' मा पनि अभिनय गरे, जसले श्रव्य कथा भन्ने शक्तिको माध्यमबाट दर्शकहरूसँग जोडियो।">
+                Beyond television and film, Rai has also made significant contributions to radio. He showcased his vocal acting skills in the radio drama 'Maisari Sunkhari', which was associated with the Anetena Foundation Nepal. He also acted in 'Mitini', a popular radio drama broadcast by Radio Sagarmatha, connecting with audiences through the power of audio storytelling.
+            </p>
+            <p class="mt-3" data-en="In addition to his work behind the microphone, he has directed dozens of music videos. This extensive experience in the music video industry has further honed his visual storytelling skills, allowing him to blend music, emotion, and cinematic visuals seamlessly."
+               data-ne="माइक्रोफोन पछाडिको कामको अतिरिक्त, उनले दर्जनौँ म्युजिक भिडियोहरू निर्देशन गरेका छन्। संगीत भिडियो उद्योगमा यो व्यापक अनुभवले उनको दृश्य कथा भन्ने सीपलाई अझै तिखारेको छ, जसले उनलाई संगीत, भावना र सिनेमाई दृश्यहरूलाई सहजै मिसाउन अनुमति दिन्छ।">
+                In addition to his work behind the microphone, he has directed dozens of music videos. This extensive experience in the music video industry has further honed his visual storytelling skills, allowing him to blend music, emotion, and cinematic visuals seamlessly.
+            </p>
+        </div>
+
+    </div>
+</div>

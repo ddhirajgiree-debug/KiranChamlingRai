@@ -1,0 +1,113 @@
+﻿@{
+    ViewData["Title"] = "News & Articles | समाचार तथा लेख";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .news-page-wrapper {
+        background-color: #0b1320;
+        color: #fff;
+        min-height: 100vh;
+        padding: 5rem 1.5rem;
+        font-family: 'Mukta', sans-serif;
+    }
+
+    .news-container {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .news-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+        .news-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .news-header p {
+            color: #a0aabf;
+            font-size: 1.1rem;
+        }
+
+    .news-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+    }
+
+    .news-card {
+        background: #152238;
+        border: 1px solid #23324d;
+        border-radius: 12px;
+        padding: 2rem;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+        }
+
+        .news-card h3 {
+            color: #d4af37;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .news-card p {
+            color: #a0aabf;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+    .news-link {
+        display: inline-block;
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        border-bottom: 1px solid #d4af37;
+        padding-bottom: 2px;
+        transition: color 0.3s;
+    }
+
+        .news-link:hover {
+            color: #d4af37;
+        }
+</style>
+
+<div class="news-page-wrapper">
+    <div class="news-container">
+        <div class="news-header">
+            <h1 data-en="News & Articles" data-ne="समाचार तथा लेख">News &amp; Articles</h1>
+            <p data-en="Read published news, press coverage, and articles about Kiran Chamling Rai." data-ne="किरण चाम्लिङ राईका बारेमा प्रकाशित समाचार, प्रेस कभरेज र लेखहरू पढ्नुहोस्।">
+                Read published news, press coverage, and articles about Kiran Chamling Rai.
+            </p>
+        </div>
+
+        <div class="news-grid">
+            <!-- News 1 -->
+            <div class="news-card">
+                <h3 data-en="News & Press Coverage" data-ne="समाचार तथा प्रेस सामग्री">News &amp; Press Coverage</h3>
+                <p data-en="Find recent news articles and press coverage related to his theatre productions and film projects." data-ne="उनको नाटक प्रस्तुति र चलचित्र परियोजनाहरूसँग सम्बन्धित हालका समाचार लेख र प्रेस कभरेजहरू खोज्नुहोस्।">
+                    Find recent news articles and press coverage related to his theatre productions and film projects.
+                </p>
+                <a href="https://www.google.com/search?q=Kiran+Chamling+Rai" target="_blank" class="news-link" data-en="Find News on Google →" data-ne="गुगलमा समाचार खोज्नुहोस् →">Find News on Google →</a>
+            </div>
+
+            <!-- News 2 -->
+            <div class="news-card">
+                <h3 data-en="Articles & Profiles" data-ne="लेख तथा परिचयात्मक सामग्री">Articles &amp; Profiles</h3>
+                <p data-en="Explore detailed articles, interviews, and profiles about his artistic journey." data-ne="उनको कलात्मक यात्राको बारेमा विस्तृत लेख, अन्तर्वार्ता र प्रोफाइलहरू अन्वेषण गर्नुहोस्।">
+                    Explore detailed articles, interviews, and profiles about his artistic journey.
+                </p>
+                <a href="https://www.imdb.com/name/nm9838278/" target="_blank" class="news-link" data-en="View IMDb Profile →" data-ne="IMDb प्रोफाइल हेर्नुहोस् →">View IMDb Profile →</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,182 @@
+﻿@{
+    ViewData["Title"] = "Contact | सम्पर्क";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .contact-page-wrapper {
+        background-color: #0b1320;
+        color: #ffffff;
+        min-height: 100vh;
+        padding: 5rem 1.5rem;
+        font-family: 'Mukta', sans-serif;
+    }
+
+    .contact-container {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .contact-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+        .contact-header h1 {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .contact-header p {
+            color: #a0aabf;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 4rem;
+        align-items: start;
+    }
+
+    .contact-details {
+        background: #152238;
+        border: 1px solid #23324d;
+        padding: 2.5rem;
+        border-radius: 12px;
+    }
+
+        .contact-details p {
+            margin-bottom: 2rem;
+        }
+
+        .contact-details strong {
+            color: #d4af37;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details a, .contact-details span {
+            color: #ffffff;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+
+    .contact-form {
+        background: #152238;
+        border: 1px solid #23324d;
+        padding: 3rem;
+        border-radius: 12px;
+    }
+
+        .contact-form label {
+            color: #a0aabf;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            background: #0b1320;
+            border: 1px solid #23324d;
+            padding: 1rem;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+            .contact-form input:focus,
+            .contact-form textarea:focus {
+                outline: none;
+                border-color: #d4af37;
+            }
+
+        .contact-form button {
+            background: #d4af37;
+            color: #0b1320;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+            .contact-form button:hover {
+                background: #f1c95b;
+            }
+
+    .form-message {
+        color: #4ade80;
+        margin-top: 1rem;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    @@media (max-width: 900px) {
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="contact-page-wrapper">
+    <div class="contact-container">
+        <div class="contact-header">
+            <h1 data-en="Contact" data-ne="सम्पर्क">Contact</h1>
+            <p data-en="For professional inquiries, theatre projects, film collaborations and events, get in touch." data-ne="व्यावसायिक प्रस्ताव, नाटक, चलचित्र सहकार्य तथा कार्यक्रमका लागि सम्पर्क गर्नुहोस्।">
+                For professional inquiries, theatre projects, film collaborations and events, get in touch.
+            </p>
+        </div>
+
+        <div class="contact-grid">
+            <!-- Left: Details -->
+            <div class="contact-details">
+                <p>
+                    <strong data-en="Phone" data-ne="फोन">Phone</strong>
+                    <a href="tel:+9779842650302">+977 9842650302</a>
+                </p>
+                <p>
+                    <strong data-en="Email" data-ne="इमेल">Email</strong>
+                    <a href="mailto:kiranchmlg@gmail.com">kiranchmlg@gmail.com</a>
+                </p>
+                <p>
+                    <strong data-en="Address" data-ne="ठेगाना">Address</strong>
+                    <span data-en="Anamnagar, Kathmandu, Nepal" data-ne="अनामनगर, काठमाडौं, नेपाल">Anamnagar, Kathmandu, Nepal</span>
+                </p>
+            </div>
+
+            <!-- Right: Form -->
+            <form asp-controller="Home" asp-action="Contact" method="post" class="contact-form">
+                @Html.AntiForgeryToken()
+
+                <label for="name" data-en="Your Name" data-ne="तपाईंको नाम">Your Name</label>
+                <input id="name" name="name" type="text" required placeholder="Your name" />
+
+                <label for="email" data-en="Your Email" data-ne="तपाईंको इमेल">Your Email</label>
+                <input id="email" name="email" type="email" required placeholder="Your email" />
+
+                <label for="message" data-en="Your Message" data-ne="तपाईंको सन्देश">Your Message</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Write your message"></textarea>
+
+                <button type="submit" data-en="Send Message" data-ne="सन्देश पठाउनुहोस्">Send Message</button>
+
+                @if (TempData["ContactMessage"] != null)
+                {
+                    <p class="form-message">@TempData["ContactMessage"]</p>
+                }
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,232 @@
+﻿@{
+    ViewData["Title"] = "Film Details | चलचित्रको विवरण";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string filmId = ViewBag.FilmId as string ?? "";
+
+    string filmTitleEn = "";
+    string filmTitleNp = "";
+    string filmRoleEn = "";
+    string filmRoleNp = "";
+    string filmDescEn = "";
+    string filmDescNp = "";
+    string filmImage = "/images/default-film.jpg";
+
+    if (filmId == "jari")
+    {
+        filmTitleEn = "Jari"; filmTitleNp = "जारी";
+        filmRoleEn = "Assistant Director"; filmRoleNp = "सहायक निर्देशक";
+        filmImage = "/images/jaari.jpg";
+        filmDescEn = "Worked as the Chief Assistant Director on this Nepali feature film, contributing to the overall production and direction process.";
+        filmDescNp = "यस नेपाली कथानक चलचित्रमा मुख्य सहायक निर्देशकको रूपमा काम गरेका छन्, जसले समग्र निर्माण र निर्देशन प्रक्रियामा योगदान पुर्‍याएको छ।";
+    }
+    else if (filmId == "mansara")
+    {
+        filmTitleEn = "Mansara"; filmTitleNp = "मनसरा";
+        filmRoleEn = "Asst. Director & Actor"; filmRoleNp = "सहायक निर्देशक र अभिनेता";
+        filmImage = "/images/mansara.jpg";
+        filmDescEn = "Contributed as the Chief Assistant Director and also showcased his acting skills in this film.";
+        filmDescNp = "मुख्य सहायक निर्देशकको रूपमा योगदान गर्नुका साथै यस चलचित्रमा आफ्नो अभिनय कौशल पनि देखाएका छन्।";
+    }
+    else if (filmId == "rimai")
+    {
+        filmTitleEn = "Rimai"; filmTitleNp = "रिमै";
+        filmRoleEn = "Assistant Director"; filmRoleNp = "सहायक निर्देशक";
+        filmImage = "/images/rimai.jpg";
+        filmDescEn = "Served as the Chief Assistant Director, helping to bring the director's vision to life on screen.";
+        filmDescNp = "मुख्य सहायक निर्देशकको रूपमा काम गर्दै, निर्देशकको दृष्टिकोणलाई पर्दामा जीवन्त बनाउन मद्दत गरेका छन्।";
+    }
+    else if (filmId == "jari2")
+    {
+        filmTitleEn = "Jari 2"; filmTitleNp = "जारी २";
+        filmRoleEn = "Asst. Director & Actor"; filmRoleNp = "सहायक निर्देशक र अभिनेता";
+        filmImage = "/images/jari2.jpg";
+        filmDescEn = "Returned as the Chief Assistant Director for the sequel, managing the production team and acting in the film.";
+        filmDescNp = "सिक्वेलको लागि मुख्य सहायक निर्देशकको रूपमा फर्किए, निर्माण टोलीको व्यवस्थापन र चलचित्रमा अभिनय गर्दै।";
+    }
+    else if (filmId == "dokh")
+    {
+        filmTitleEn = "Dokh"; filmTitleNp = "दोख";
+        filmRoleEn = "Acting Role"; filmRoleNp = "अभिनय भूमिका";
+        filmImage = "/images/dokh.jpg";
+        filmDescEn = "Played a pivotal acting role in this film, bringing depth and emotion to the character, which was well-received by the audience.";
+        filmDescNp = "यस चलचित्रमा एक महत्त्वपूर्ण अभिनय भूमिका निभाए, जसले पात्रलाई गहिराइ र भावना दियो, जसलाई दर्शकहरूले रुचाए।";
+    }
+    else if (filmId == "saili")
+    {
+        filmTitleEn = "Saili"; filmTitleNp = "साइलि";
+        filmRoleEn = "Acting Role"; filmRoleNp = "अभिनय भूमिका";
+        filmImage = "/images/saili.jpg";
+        filmDescEn = "Showcased his versatility as an actor in 'Saili', contributing to the film's narrative with a compelling performance.";
+        filmDescNp = "'साइलि' मा एक अभिनेताको रूपमा आफ्नो बहुमुखी प्रतिभा देखाए, एक आकर्षक प्रदर्शनको साथ चलचित्रको कथामा योगदान दिए।";
+    }
+    else if (filmId == "baristha-balaram")
+    {
+        filmTitleEn = "Baristha Balaram"; filmTitleNp = "वरिष्ठ बलराम";
+        filmRoleEn = "Acting Role"; filmRoleNp = "अभिनय भूमिका";
+        filmImage = "/images/barista.jpg";
+        filmDescEn = "Acted in this film, adding significant value to the storyline and character dynamics through his performance.";
+        filmDescNp = "यस चलचित्रमा अभिनय गरे, आफ्नो प्रदर्शनको माध्यमबाट कथा र पात्रको गतिशीलतामा महत्त्वपूर्ण योगदान दिए।";
+    }
+    else if (filmId == "na-yeta-na-uta")
+    {
+        filmTitleEn = "Na Yeta Na Uta"; filmTitleNp = "न यता न उता";
+        filmRoleEn = "Acting Role"; filmRoleNp = "अभिनय भूमिका";
+        filmImage = "/images/naytanauta.jpg";
+        filmDescEn = "Delivered a strong performance in this film, exploring complex emotions and character arcs.";
+        filmDescNp = "यस चलचित्रमा एक बलियो प्रदर्शन दिए, जटिल भावनाहरू र पात्रको यात्राको अन्वेषण गर्दै।";
+    }
+    else if (filmId == "senako-cheli")
+    {
+        filmTitleEn = "Senako Cheli"; filmTitleNp = "नेपाली सेनाको चेली";
+        filmRoleEn = "Short Film"; filmRoleNp = "लघु चलचित्र";
+        filmImage = "/images/senako.jpg";
+        filmDescEn = "Acted in this short film, which was recognized at the Nepal Army Short Film Festival, highlighting his range across different formats.";
+        filmDescNp = "यस लघु चलचित्रमा अभिनय गरे, जसलाई नेपाली सेना लघु चलचित्र महोत्सवमा मान्यता दिइएको थियो, जसले विभिन्न ढाँचाहरूमा उनको दायरालाई उजागर गर्दछ।";
+    }
+}
+
+<style>
+    .film-details-wrapper {
+        background-color: #0b1320;
+        color: #ffffff;
+        min-height: 100vh;
+        padding: 5rem 1.5rem;
+        font-family: 'Mukta', sans-serif;
+    }
+
+    .film-details-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 400px 1fr;
+        gap: 4rem;
+        align-items: start;
+    }
+
+    .film-image-wrap {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        border: 2px solid rgba(212, 175, 55, 0.2);
+        background: #152238;
+        min-height: 400px;
+    }
+
+        .film-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+    .film-content-wrap {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .film-title-en {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.8rem;
+        color: #ffffff;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+
+    .film-tags {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .film-tag {
+        background: rgba(212, 175, 55, 0.1);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        color: #d4af37;
+        padding: 0.4rem 1rem;
+        border-radius: 5px;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+    .film-synopsis-title {
+        color: #d4af37;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #23324d;
+        padding-bottom: 0.5rem;
+        display: inline-block;
+    }
+
+    .film-synopsis p {
+        color: #d1d5db;
+        font-size: 1.1rem;
+        line-height: 1.9;
+        margin-bottom: 1.5rem;
+        text-align: justify;
+    }
+
+    .back-btn {
+        display: inline-block;
+        margin-top: 2rem;
+        background: #d4af37;
+        color: #0b1320;
+        padding: 0.8rem 2rem;
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+        align-self: flex-start;
+    }
+
+        .back-btn:hover {
+            background: #f1c95b;
+        }
+
+    @@media (max-width: 900px) {
+        .film-details-container {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .film-image-wrap {
+            max-width: 400px;
+            margin: 0 auto;
+            min-height: 300px;
+        }
+
+        .film-title-en {
+            font-size: 2.2rem;
+        }
+    }
+</style>
+
+<div class="film-details-wrapper">
+    <div class="film-details-container">
+
+        <div class="film-image-wrap">
+            <img src="@filmImage" alt="@filmTitleEn" />
+        </div>
+
+        <div class="film-content-wrap">
+            <h1 class="film-title-en" data-en="@filmTitleEn" data-ne="@filmTitleNp">@filmTitleEn</h1>
+
+            <div class="film-tags">
+                <span class="film-tag" data-en="@filmRoleEn" data-ne="@filmRoleNp">@filmRoleEn</span>
+            </div>
+
+            <h3 class="film-synopsis-title" data-en="About the Film" data-ne="चलचित्रको बारेमा">About the Film</h3>
+            <div class="film-synopsis">
+                <p data-en="@filmDescEn" data-ne="@filmDescNp">@filmDescEn</p>
+            </div>
+
+            <!-- 👇 यहाँ asp-action="Films" राखिएको छ -->
+            <a asp-controller="Home" asp-action="Films" class="back-btn" data-en="← Back to Films" data-ne="← चलचित्रमा फर्कनुहोस्">
+                ← Back to Films
+            </a>
+        </div>
+
+    </div>
+</div>
